@@ -1,0 +1,1 @@
+var firebaseConfig = {"apiKey":"AIzaSyBLCSH2h01BB8hPpl8jZ-FIdAQLyVGJJ88","authDomain":"yellowride-ac6af..firebaseapp.com","projectId":"yellowride-ac6af","storageBucket":"yellowride-ac6af.firebasestorage.app","messagingSenderId":"364612528589","appId":"1:364612528589:web:895bfa70b15f10f2c8fc84","measurementId":"G-S78Z30HC5Y"}

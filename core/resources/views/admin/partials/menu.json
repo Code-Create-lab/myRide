@@ -1,0 +1,292 @@
+{
+    "main": [
+        {
+            "keyword": [
+                "Dashboard",
+                "Home",
+                "Panel",
+                "Admin",
+                "Control center",
+                "Overview",
+                "Main hub",
+                "Management hub",
+                "Administrative hub",
+                "Central hub",
+                "Command center",
+                "Administrator portal",
+                "Centralized interface",
+                "Admin console",
+                "Management dashboard",
+                "Main screen",
+                "Administrative dashboard",
+                "Command dashboard",
+                "Main control panel"
+            ],
+            "title": "Dashboard",
+            "icon": "las la-tachometer-alt",
+            "route_name": "admin.dashboard"
+        },
+        {
+            "title": "Manage Rides",
+            "icon": "las la-car",
+            "menu_active": "admin.rides*",
+            "submenu": [
+                {
+                    "keyword": [
+                        "Scheduled Rides",
+                        "Rides management"
+                    ],
+                    "title": "Scheduled Rides",
+                    "route_name": "admin.rides.scheduled",
+                    "menu_active": "admin.rides.scheduled"
+                },
+                {
+                    "keyword": [
+                        "New Rides",
+                        "Rides management"
+                    ],
+                    "title": "New Rides",
+                    "route_name": "admin.rides.new",
+                    "menu_active": "admin.rides.new"
+                },
+                {
+                    "keyword": [
+                        "Running Rides",
+                        "Rides management"
+                    ],
+                    "title": "Running Rides",
+                    "route_name": "admin.rides.running",
+                    "menu_active": "admin.rides.running"
+                },
+                {
+                    "keyword": [
+                        "Completed Rides",
+                        "Rides management"
+                    ],
+                    "title": "Completed Rides",
+                    "route_name": "admin.rides.completed",
+                    "menu_active": "admin.rides.completed"
+                },
+                {
+                    "keyword": [
+                        "Cancelled Rides",
+                        "Rides management"
+                    ],
+                    "title": "Cancelled Rides",
+                    "route_name": "admin.rides.canceled",
+                    "menu_active": "admin.rides.canceled"
+                },
+                {
+                    "keyword": [
+                        "All Rides",
+                        "Rides management"
+                    ],
+                    "title": "All Rides",
+                    "route_name": "admin.rides.all",
+                    "menu_active": "admin.rides.all"
+                }
+            ]
+        },
+        
+        
+        {
+            "title": "System Setup",
+            "icon": "las la-list-alt",
+            "menu_active": [
+                "admin.zone.*",
+                "admin.service.index",
+                "admin.coupon.index",
+                "admin.vehicle.index",
+                "admin.rider.rule.index"
+                
+            ],
+            "submenu": [
+                {
+                    "keyword": [
+                        "zone",
+                        "area"
+                    ],
+                    "title": "Manage Zone",
+                    "route_name": "admin.zone.index",
+                    "menu_active": "admin.zone.*"
+                },
+                {
+                    "keyword": [
+                        "service",
+                        "car",
+                        "bike",
+                        "rent",
+                        "taxi"
+                    ],
+                    "title": "Manage Service",
+                    "route_name": "admin.service.index",
+                    "menu_active": "admin.service.index"
+                },
+                {
+                    "title": "Manage Coupon",
+                    "route_name": "admin.coupon.index",
+                    "menu_active": "admin.coupon.index"
+                },
+                {
+                    "title": "Manage Vehicle",
+                    "route_name": "admin.vehicle.index",
+                    "menu_active": "admin.vehicle.index"
+                }
+            ]
+        },
+        {
+            "title": "Driver / Vehicle",
+            "icon": "fa-solid fa-car",
+            "route_name": "admin.vehicle.detail"
+        },
+        {
+            "title": "All Reviews",
+            "icon": "las la-star-half-alt",
+            "route_name": "admin.reviews.all"
+        },
+        {
+            "title": "All SOS",
+            "icon": "las la-sos",
+            "route_name": "admin.sos.all"
+        }
+    ],
+    "people": [
+        {
+            "title": "Manage Riders",
+            "icon": "las la-user-friends",
+            "counters": [
+                "bannedRiderCount",
+                "emailUnverifiedRiderCount",
+                "mobileUnverifiedRiderCount"
+            ],
+            "menu_active": [
+                "admin.rider.active",
+                "admin.rider.banned",
+                "admin.rider.all"
+            ],
+            "submenu": [
+                {
+                    "keyword": [
+                        "active rider",
+                        "Manage rider",
+                        "User management",
+                        "User control",
+                        "User status",
+                        "User activity",
+                        "User analytics"
+                    ],
+                    "title": "Active Riders",
+                    "route_name": "admin.rider.active",
+                    "menu_active": "admin.rider.active"
+                },
+                {
+                    "keyword": [
+                        "banned rider",
+                        "Manage rider",
+                        "User management",
+                        "Account bans",
+                        "User activity"
+                    ],
+                    "title": "Banned Riders",
+                    "route_name": "admin.rider.banned",
+                    "menu_active": "admin.rider.banned",
+                    "counter": "bannedRiderCount"
+                },
+                {
+                    "keyword": [
+                        "all rider rider",
+                        "Manage rider",
+                        "User management",
+                        "User control",
+                        "User activity",
+                        "User analytics"
+                    ],
+                    "title": "All Riders",
+                    "route_name": "admin.rider.all",
+                    "menu_active": "admin.rider.all"
+                }
+            ]
+        },
+        {
+            "title": "Manage Drivers",
+            "icon": "las la-users",
+            "counters": [
+                "bannedDriversCount",
+                "emailUnverifiedDriversCount",
+                "mobileUnverifiedDriversCount",
+                "unverifiedDriversCount",
+                "pendingDriversCount"
+            ],
+            "menu_active": "admin.driver.*",
+            "submenu": [
+                {
+                    "title": "Active Drivers",
+                    "route_name": "admin.driver.active",
+                    "menu_active": "admin.driver.active"
+                },
+                {
+                    "title": "Banned Drivers",
+                    "route_name": "admin.driver.banned",
+                    "menu_active": "admin.driver.banned",
+                    "counter": "bannedDriversCount"
+                },
+                {
+                    "title": "Document Unverified",
+                    "route_name": "admin.driver.unverified",
+                    "menu_active": "admin.driver.unverified",
+                    "counter": "unverifiedDriversCount"
+                },
+                {
+                    "title": "Document Pending",
+                    "route_name": "admin.driver.verify.pending",
+                    "menu_active": "admin.driver.verify.pending",
+                    "counter": "pendingDriversCount"
+                },
+                {
+                    "title": "All Drivers",
+                    "route_name": "admin.driver.all",
+                    "menu_active": "admin.driver.all"
+                }
+            ]
+        }
+    ],
+
+    "system report": [
+        {
+            "title": "Rider Report",
+            "icon": "las la-car",
+            "menu_active": "admin.report.rider.*",
+            "submenu": [
+                {
+                    "title": "Rider Payment",
+                    "route_name": "admin.report.rider.payment",
+                    "menu_active": "admin.report.rider.payment",
+                    "keyword": [
+                        "payment",
+                        "payment history",
+                        "system payment",
+                        "ride payment"
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Driver Report",
+            "icon": "las la-table",
+            "menu_active": "admin.report.driver.*",
+            "submenu": [
+                {
+                    "title": "Commission History",
+                    "route_name": "admin.report.driver.commission",
+                    "menu_active": "admin.report.driver.commission",
+                    "keyword": [
+                        "profit log",
+                        "commission log",
+                        "ride commission",
+                        "system profit"
+                    ]
+                }
+            ]
+        }
+    ]
+}
