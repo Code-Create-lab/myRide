@@ -48,27 +48,27 @@ class AuthorizationController extends Controller
             $driver->save();
 
 
-            $apiUrl = 'http://admagister.net/api/mt/SendSMS';
-            // Generate a 4-digit random OTP
-            // $otp = rand(100000, 999999);
-            $txt = "Your OTP for Yellow Rides is " .  $driver->ver_code  . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
-    
-            // API parameters
-            $params = [
-                'channel' => 'Trans',
-                'DCS' => 0,
-                'flashsms' => 9,
-                'number' => '91' . $driver->mobile,
-                'user' => 'YELLOW2025',
-                'password' => 'YELLOW2025', // Replace with the actual password
-                'text' => $txt,
-                'route' => 30,
-                'senderid' => 'JSRIPL',
-            ];
-    
-            // Send the SMS using Laravel's HTTP client
-            $sms = Http::get($apiUrl, $params);
-    
+            // $apiUrl = 'http://admagister.net/api/mt/SendSMS';
+            // // Generate a 4-digit random OTP
+            // // $otp = rand(100000, 999999);
+            // $txt = "Your OTP for Yellow Rides is " .  $driver->ver_code  . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
+
+            // // API parameters
+            // $params = [
+            //     'channel' => 'Trans',
+            //     'DCS' => 0,
+            //     'flashsms' => 9,
+            //     'number' => '91' . $driver->mobile,
+            //     'user' => 'YELLOW2025',
+            //     'password' => 'YELLOW2025', // Replace with the actual password
+            //     'text' => $txt,
+            //     'route' => 30,
+            //     'senderid' => 'JSRIPL',
+            // ];
+
+            // // Send the SMS using Laravel's HTTP client
+            // $sms = Http::get($apiUrl, $params);
+
             notify($driver, $notifyTemplate, [
                 'code' => $driver->ver_code
             ], [$type]);
@@ -98,26 +98,26 @@ class AuthorizationController extends Controller
         $driver->save();
 
 
-        $apiUrl = 'http://admagister.net/api/mt/SendSMS';
-        // Generate a 4-digit random OTP
-        // $otp = rand(100000, 999999);
-        $txt = "Your OTP for Yellow Rides is " .  $driver->ver_code  . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
+        // $apiUrl = 'http://admagister.net/api/mt/SendSMS';
+        // // Generate a 4-digit random OTP
+        // // $otp = rand(100000, 999999);
+        // $txt = "Your OTP for Yellow Rides is " .  $driver->ver_code  . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
 
-        // API parameters
-        $params = [
-            'channel' => 'Trans',
-            'DCS' => 0,
-            'flashsms' => 9,
-            'number' => '91' . $driver->mobile,
-            'user' => 'YELLOW2025',
-            'password' => 'YELLOW2025', // Replace with the actual password
-            'text' => $txt,
-            'route' => 30,
-            'senderid' => 'JSRIPL',
-        ];
+        // // API parameters
+        // $params = [
+        //     'channel' => 'Trans',
+        //     'DCS' => 0,
+        //     'flashsms' => 9,
+        //     'number' => '91' . $driver->mobile,
+        //     'user' => 'YELLOW2025',
+        //     'password' => 'YELLOW2025', // Replace with the actual password
+        //     'text' => $txt,
+        //     'route' => 30,
+        //     'senderid' => 'JSRIPL',
+        // ];
 
-        // Send the SMS using Laravel's HTTP client
-        $sms = Http::get($apiUrl, $params);
+        // // Send the SMS using Laravel's HTTP client
+        // $sms = Http::get($apiUrl, $params);
 
 
 

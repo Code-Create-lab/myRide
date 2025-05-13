@@ -111,27 +111,27 @@ class BidController extends Controller
 
        $diffInMinutes = number_format($start_time->diffInMinutes($end_time), 2, '.', '');
 
-        $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-            ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-                "clientId" => "yellow_rides",
-                "channel" => "whatsapp",
-                "token" => "",
-                "send_to" => $ride->user->mobile,
-                "button" => false,
-                "header" => "",
-                "footer" => "",
-                "parameters" => [ $ride->uid, $ride->service->name,  $ride->pickup_location, $ride->destination, number_format($ride->distance, 2, '.', ''), number_format($ride->recommend_amount, 2, '.', '')],
-                "msg_type" => "TEXT",
-                "templateName" => "booking_confirmation",
-                "media_url" => "",
-                "buttonUrlParam" => "",
-                "userName" => "",
-                "lang" => "en"
-            ]);
+        // $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
+        //     ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
+        //         "clientId" => "yellow_rides",
+        //         "channel" => "whatsapp",
+        //         "token" => "",
+        //         "send_to" => $ride->user->mobile,
+        //         "button" => false,
+        //         "header" => "",
+        //         "footer" => "",
+        //         "parameters" => [ $ride->uid, $ride->service->name,  $ride->pickup_location, $ride->destination, number_format($ride->distance, 2, '.', ''), number_format($ride->recommend_amount, 2, '.', '')],
+        //         "msg_type" => "TEXT",
+        //         "templateName" => "booking_confirmation",
+        //         "media_url" => "",
+        //         "buttonUrlParam" => "",
+        //         "userName" => "",
+        //         "lang" => "en"
+        //     ]);
 
-        // Get response
-        // dd($response->json());
-        $data['waba_response'] = $response->json();
+        // // Get response
+        // // dd($response->json());
+        // $data['waba_response'] = $response->json();
 
         // Debug response
 
@@ -159,18 +159,18 @@ class BidController extends Controller
         initializePusher();
         event(new AcceptRide($ride, 'ride_accept', $data)); // on Clicking On Create Bid
         // event(new AcceptRide($ride, 'ride_accept_drive', $data)); // on Clicking On Create Bid
-     
+
         $getDrivers = Driver::active()->get();
-        
+
         foreach ($getDrivers as $driver) {
-     
+
             event(new NewRide("new-ride-for-driver-$driver->id", ['ride' => $ride], 'ride_accept_driver'));
         }
-   
+
             //    event(new EventsRide($ride, 'new_bid', $data)); // on Clicking On Create Bid
         // dd("bid_accept");
 
-       
+
         notify($ride->user, 'ACCEPT_RIDE', [
             'ride_id'         => $ride->uid,
             'amount'          => showAmount($ride->amount),
@@ -180,7 +180,7 @@ class BidController extends Controller
             'destination'     => $ride->destination,
             'duration'        => $ride->duration,
             'distance'        => $ride->distance,
-            'pickup_date_time' => Carbon::parse($ride->pickup_date_time)->format('F j, Y \a\t g:i A') 
+            'pickup_date_time' => Carbon::parse($ride->pickup_date_time)->format('F j, Y \a\t g:i A')
         ]);
 
         // event(new EventsRide($ride, 'new_bid', $data));

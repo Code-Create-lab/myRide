@@ -81,55 +81,55 @@ class RegisterController extends Controller
         $apiUrl = 'http://admagister.net/api/mt/SendSMS';
             // Generate a 4-digit random OTP
             $otp = rand(100000, 999999);
-            $txt = "Your OTP for Yellow Rides is " . $otp . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
+            // $txt = "Your OTP for Yellow Rides is " . $otp . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
 
-            // API parameters
-            $params = [
-                'channel' => 'Trans',
-                'DCS' => 0,
-                'flashsms' => 9,
-                'number' => '91' . $request->mobile,
-                'user' => 'YELLOW2025',
-                'password' => 'YELLOW2025', // Replace with the actual password
-                'text' => $txt,
-                'route' => 30,
-                'senderid' => 'JSRIPL',
-            ];
+            // // API parameters
+            // $params = [
+            //     'channel' => 'Trans',
+            //     'DCS' => 0,
+            //     'flashsms' => 9,
+            //     'number' => '91' . $request->mobile,
+            //     'user' => 'YELLOW2025',
+            //     'password' => 'YELLOW2025', // Replace with the actual password
+            //     'text' => $txt,
+            //     'route' => 30,
+            //     'senderid' => 'JSRIPL',
+            // ];
 
-            // Send the SMS using Laravel's HTTP client
-            $sms = Http::get($apiUrl, $params);
+            // // Send the SMS using Laravel's HTTP client
+            // $sms = Http::get($apiUrl, $params);
 
 
-          
+
             // Log::info(' $sms:',  $sms->toArray());
 
         $user = User::where('mobile', $request->mobile)->first();
 
-        $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-            "clientId" => "yellow_rides",
-            "channel" => "whatsapp",
-            "token" => "",
-            "send_to" => $request->mobile,
-            "button" => false,
-            "header" => "",
-            "footer" => "",
-            "parameters" => [$otp],
-            "msg_type" => "TEXT",
-            "templateName" => "send_otp_new",
-            "media_url" => "",
-            "buttonUrlParam" => $otp,
-            "userName" => "",
-            "lang" => "en"
-        ]);
+    //     $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
+    //     ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
+    //         "clientId" => "yellow_rides",
+    //         "channel" => "whatsapp",
+    //         "token" => "",
+    //         "send_to" => $request->mobile,
+    //         "button" => false,
+    //         "header" => "",
+    //         "footer" => "",
+    //         "parameters" => [$otp],
+    //         "msg_type" => "TEXT",
+    //         "templateName" => "send_otp_new",
+    //         "media_url" => "",
+    //         "buttonUrlParam" => $otp,
+    //         "userName" => "",
+    //         "lang" => "en"
+    //     ]);
 
-    // Get response
-        $data['waba_response'] = $response->json();
+    // // Get response
+    //     $data['waba_response'] = $response->json();
 
         Log::info('paymentViaGateway:', $data);
         if(!$user){
 
-            
+
             // $userCreate = [$request->all(), $otp];
             $user = $this->create(array_merge($request->all(), ['otp' => $otp]));
 

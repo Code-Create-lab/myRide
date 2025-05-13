@@ -87,76 +87,76 @@ class RegisterController extends Controller
             return apiResponse("validation_error", "error", $validator->errors()->all());
         }
 
-                $apiUrl = 'http://admagister.net/api/mt/SendSMS';
-                // Generate a 4-digit random OTP
+                // $apiUrl = 'http://admagister.net/api/mt/SendSMS';
+                // // Generate a 4-digit random OTP
                 $otp = verificationCode(6);
-                
-                $txt = "Your OTP for Yellow Rides is " . $otp . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
 
-                // API parameters
-                $params = [
-                    'channel' => 'Trans',
-                    'DCS' => 0,
-                    'flashsms' => 9,
-                    'number' => '91' . $request->mobile,
-                    'user' => 'YELLOW2025',
-                    'password' => 'YELLOW2025', // Replace with the actual password
-                    'text' => $txt,
-                    'route' => 30,
-                    'senderid' => 'JSRIPL',
-                ];
+                // $txt = "Your OTP for Yellow Rides is " . $otp . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
 
-                // Send the SMS using Laravel's HTTP client
-                $sms = Http::get($apiUrl, $params);
+                // // API parameters
+                // $params = [
+                //     'channel' => 'Trans',
+                //     'DCS' => 0,
+                //     'flashsms' => 9,
+                //     'number' => '91' . $request->mobile,
+                //     'user' => 'YELLOW2025',
+                //     'password' => 'YELLOW2025', // Replace with the actual password
+                //     'text' => $txt,
+                //     'route' => 30,
+                //     'senderid' => 'JSRIPL',
+                // ];
+
+                // // Send the SMS using Laravel's HTTP client
+                // $sms = Http::get($apiUrl, $params);
 
 
-            
+
                 // Log::info(' $sms:',  $sms->toArray());
 
             $driver = Driver::where('mobile', $request->mobile)->first();
 
             try {
-                $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-                    ->timeout(3) // Timeout in seconds
-                    ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-                        "clientId" => "yellow_rides",
-                        "channel" => "whatsapp",
-                        "token" => "",
-                        "send_to" => $request->mobile,
-                        "button" => false,
-                        "header" => "",
-                        "footer" => "",
-                        "parameters" => [$otp],
-                        "msg_type" => "TEXT",
-                        "templateName" => "send_otp_new",
-                        "media_url" => "",
-                        "buttonUrlParam" => $otp,
-                        "userName" => "",
-                        "lang" => "en"
-                    ]);
-            
-                $data['waba_response'] = $response->json();
+                // $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
+                //     ->timeout(3) // Timeout in seconds
+                //     ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
+                //         "clientId" => "yellow_rides",
+                //         "channel" => "whatsapp",
+                //         "token" => "",
+                //         "send_to" => $request->mobile,
+                //         "button" => false,
+                //         "header" => "",
+                //         "footer" => "",
+                //         "parameters" => [$otp],
+                //         "msg_type" => "TEXT",
+                //         "templateName" => "send_otp_new",
+                //         "media_url" => "",
+                //         "buttonUrlParam" => $otp,
+                //         "userName" => "",
+                //         "lang" => "en"
+                //     ]);
+
+                // $data['waba_response'] = $response->json();
             } catch (\Exception $e) {
                 // Log the error or assign default value
                 \Log::error('WhatsApp API Error: ' . $e->getMessage());
-            
+
                 $data['waba_response'] = ['error' => true, 'message' => 'Notification API failed'];
             }
 
             Log::info('paymentViaGateway:', $data);
             if(!$driver){
-    
-                
+
+
                 // $userCreate = [$request->all(), $otp];
                 $driver = $this->create(array_merge($request->all(), ['otp' => $otp]));
-    
+
                 $data['access_token'] = $driver->createToken('driver_token')->plainTextToken;
                 $data['user']         = $driver;
                 $data['token_type']   = 'Bearer';
                 $notify[]             = 'OTP Send Successfully';
-    
+
             }else{
-    
+
                  // dd($user);
                 $updateOtp = Driver::where('mobile', $request->mobile)->update(['ver_code' => $otp]);
                 // dd( $updateOtp );
@@ -165,7 +165,7 @@ class RegisterController extends Controller
                 // $data['otp'] = $otp;
                 // $driver->profile_complete = Status::YES;
                 $data['access_token'] = $driver->createToken('driver_token')->plainTextToken;
-                $data['driver']       = $driver;     
+                $data['driver']       = $driver;
                 $data['token_type']   = 'Bearer';
                 $data['image_path']   = getFilePath('driver');
                 $notify[]             = 'OTP Send Successfully';
@@ -189,7 +189,7 @@ class RegisterController extends Controller
         $lastEmployee = Driver::where('employee_code', 'LIKE', 'YRIDES%')
             ->orderBy('id', 'desc')
             ->first();
-                
+
         if ($lastEmployee) {
             // Extract the numeric part and increment
             $lastNumber = (int)substr($lastEmployee->employee_code, 6);
@@ -198,7 +198,7 @@ class RegisterController extends Controller
             // Start from 1 if no existing record
             $newNumber = '00000001';
         }
-    
+
         // Generate the new employee code
         $newEmployeeCode = "YRIDES" . $newNumber;
 

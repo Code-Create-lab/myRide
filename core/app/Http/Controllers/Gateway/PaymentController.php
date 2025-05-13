@@ -38,7 +38,7 @@ class PaymentController extends Controller
 
     public function appDepositConfirm($hash)
     {
-        
+
         try {
             $id = decrypt($hash);
         } catch (\Exception $ex) {
@@ -48,9 +48,9 @@ class PaymentController extends Controller
         $data = Deposit::where('id', $id)->where('status', Status::PAYMENT_INITIATE)->orderBy('id', 'DESC')->firstOrFail();
         session()->put('Track', $data->trx);
 
-      
-       
-        
+
+
+
         if ($data->user_id) {
             $user = User::findOrFail($data->user_id);
             auth()->login($user);
@@ -69,8 +69,8 @@ class PaymentController extends Controller
         $deposit = Deposit::where('trx', $track)->where('status', Status::PAYMENT_INITIATE)->orderBy('id', 'DESC')->with('gateway')->firstOrFail();
 
 
-       
-       
+
+
         if ($deposit->method_code >= 1000) {
             return to_route('driver.deposit.manual.confirm');
         }
@@ -82,7 +82,7 @@ class PaymentController extends Controller
         $data = json_decode($data);
 
 
-       
+
         if (isset($data->error)) {
             $notify[] = ['error', $data->message];
             return back()->withNotify($notify);
@@ -138,7 +138,7 @@ class PaymentController extends Controller
 
                 $gstValue = "( ".$ride->service->gst."% ) :";
 
-      
+
             if(!$ride->is_scheduled){
 
 
@@ -162,24 +162,24 @@ class PaymentController extends Controller
                         ''
                     )
                     ];
-          
-        $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-            "clientId" => "yellow_rides",
-            "channel" => "whatsapp",
-            "token" => "",
-            "send_to" => $ride->user->mobile,
-            "button" => false,
-            "header" => "",
-            "footer" => "",
-            "parameters" => $paramWaba,
-            "msg_type" => "TEXT",
-            "templateName" => "ride_completed1",
-            "media_url" =>"",
-            "buttonUrlParam" =>$ride->uid,
-            "userName" => "",
-            "lang" => "en"
-        ]);
+
+        // $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
+        // ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
+        //     "clientId" => "yellow_rides",
+        //     "channel" => "whatsapp",
+        //     "token" => "",
+        //     "send_to" => $ride->user->mobile,
+        //     "button" => false,
+        //     "header" => "",
+        //     "footer" => "",
+        //     "parameters" => $paramWaba,
+        //     "msg_type" => "TEXT",
+        //     "templateName" => "ride_completed1",
+        //     "media_url" =>"",
+        //     "buttonUrlParam" =>$ride->uid,
+        //     "userName" => "",
+        //     "lang" => "en"
+        // ]);
 
 
         // Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
@@ -242,23 +242,23 @@ class PaymentController extends Controller
             )
             ];
 
-        $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-            "clientId" => "yellow_rides",
-            "channel" => "whatsapp",
-            "token" => "",
-            "send_to" => $ride->user->mobile,
-            "button" => false,
-            "header" => "",
-            "footer" => "",
-            "parameters" => $paramWaba,
-            "msg_type" => "TEXT",
-            "templateName" => "advance_booking1",
-            "media_url" =>"",
-            "buttonUrlParam" =>$ride->uid,
-            "userName" => "",
-            "lang" => "en"
-        ]);
+        // $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
+        // ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
+        //     "clientId" => "yellow_rides",
+        //     "channel" => "whatsapp",
+        //     "token" => "",
+        //     "send_to" => $ride->user->mobile,
+        //     "button" => false,
+        //     "header" => "",
+        //     "footer" => "",
+        //     "parameters" => $paramWaba,
+        //     "msg_type" => "TEXT",
+        //     "templateName" => "advance_booking1",
+        //     "media_url" =>"",
+        //     "buttonUrlParam" =>$ride->uid,
+        //     "userName" => "",
+        //     "lang" => "en"
+        // ]);
 
 
         // Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
@@ -299,8 +299,8 @@ class PaymentController extends Controller
 
     }
 
-        $data['waba_response'] = $response ;
-        $data['waba_param'] = $paramWaba ;
+        // $data['waba_response'] = $response ;
+        // $data['waba_param'] = $paramWaba ;
 
         if($ride->user->email){
 
