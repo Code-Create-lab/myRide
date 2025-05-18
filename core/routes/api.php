@@ -36,6 +36,7 @@ Route::namespace('Api\User')->group(function () {
             Route::post('social-login', 'socialLogin');
         });
         Route::post('register', 'RegisterController@register')->name('user.login');
+        Route::post('register_user', 'RegisterController@register_user')->name('user.register_user');
         Route::post('verifyOtp', 'RegisterController@verifyOtp');
         Route::controller('ForgotPasswordController')->group(function () {
             Route::post('password/email', 'sendResetCodeEmail');

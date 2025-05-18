@@ -56,6 +56,7 @@ class LoginController extends Controller
 
         $credentials = request([$this->username, 'password']);
 
+        // dd($credentials);
         if (!Auth::attempt(array_merge($credentials, ['is_deleted' => Status::NO]))) {
             $response[] = 'The provided credentials can not match our record';
             return apiResponse("invalid_credential", "error", $response);

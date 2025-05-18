@@ -126,7 +126,7 @@ class RegisterController extends Controller
     // // Get response
     //     $data['waba_response'] = $response->json();
 
-        Log::info('paymentViaGateway:', $data);
+        // Log::info('paymentViaGateway:', $data);
         if(!$user){
 
 
@@ -303,5 +303,27 @@ class RegisterController extends Controller
             ];
         }
         return response()->json($response);
+    }
+
+        public function register_user(Request $request)
+    {
+        if (!gs('registration')) {
+            $notify[] = 'Registration not allowed';
+            return apiResponse("registration_disabled", "error", $notify);
+        }
+
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            return apiResponse("validation_error", "error", $validator->errors()->all());
+        }
+
+        $user = $this->create($request->all());
+
+        $data['access_token'] = $user->createToken('auth_token')->plainTextToken;
+        $data['user']         = $user;
+        $data['token_type']   = 'Bearer';
+        $notify[]             = 'Registration successful';
+
+        return apiResponse("registration_success", "success", $notify,  $data);
     }
 }
