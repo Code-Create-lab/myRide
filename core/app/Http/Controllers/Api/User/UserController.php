@@ -47,7 +47,7 @@ class UserController extends Controller
             'payment_method'     => $paymentMethod,
             'services'           => $services,
             'running_ride'       => $runningRide,
-            'helpline_no'        => $adminData->contact_no,   
+            'helpline_no'        => $adminData->contact_no,
             'service_image_path' => getFilePath('service'),
             'gateway_image_path' => getFilePath('gateway'),
             'user_image_path'    => getFilePath('user'),
@@ -74,7 +74,7 @@ class UserController extends Controller
             'country'      => 'required|in:' . $countries,
             'mobile_code'  => 'required|in:' . $mobileCodes,
             // 'username'     => 'required|unique:users|min:6',
-            'mobile'       => ['required', 'regex:/^([0-9]*)$/', Rule::unique('users')->where('dial_code', $request->mobile_code)],
+            // 'mobile'       => ['required', 'regex:/^([0-9]*)$/', Rule::unique('users')->where('dial_code', $request->mobile_code)],
         ]);
 
         if ($validator->fails()) {
