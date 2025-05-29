@@ -49,7 +49,7 @@ class RegisterController extends Controller
         }
 
         $validate     = Validator::make($data, [
-            //'mobile' => 'required',
+            'mobile' => 'required',
             // 'firstname' => 'required',
             // 'lastname'  => 'required',
             // 'email'     => 'required|string|email|unique:users',
