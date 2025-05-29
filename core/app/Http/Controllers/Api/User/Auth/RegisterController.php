@@ -50,10 +50,10 @@ class RegisterController extends Controller
 
         $validate     = Validator::make($data, [
             //'mobile' => 'required',
-            'firstname' => 'required',
-            'lastname'  => 'required',
-            'email'     => 'required|string|email|unique:users',
-            'password'  => ['required', 'confirmed', $passwordValidation],
+            // 'firstname' => 'required',
+            // 'lastname'  => 'required',
+            // 'email'     => 'required|string|email|unique:users',
+            // 'password'  => ['required', 'confirmed', $passwordValidation],
             // 'agree'     => $agree
         ], [
             // 'firstname.required' => 'The first name field is required',
