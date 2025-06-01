@@ -1,36 +1,6 @@
-{{-- @extends($activeTemplate . 'layouts.frontend')
-@section('content') --}}
-  
-<!doctype html>
-<html lang="{{ config('app.locale') }}" itemscope itemtype="http://schema.org/WebPage">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> {{ gs()->siteName(__($pageTitle)) }}</title>
-    @include('partials.seo')
-
-    <link href="{{ asset('assets/global/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/global/css/all.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/global/css/line-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'css/animate.css') }}">
-    @stack('style-lib')
-
-    <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset($activeTemplateTrue . 'css/main.css') }}">
-
-    @stack('style')
-
-    <link rel="stylesheet"
-        href="{{ asset($activeTemplateTrue . 'css/color.php') }}?color={{ gs('base_color') }}&secondColor={{ gs('secondary_color') }}">
-</head>
-
-@php echo loadExtension('google-analytics') @endphp
-
-<body>
-
-  @php
+@extends($activeTemplate . 'layouts.frontend')
+@section('content')
+    @php
         $contactContent = @getContent('contact_us.content', true)->data_values;
         $links = getContent('policy_pages.element', orderById: true);
     @endphp
@@ -38,11 +8,11 @@
     <section class="contact-section bg-img"
         data-background-image="{{ frontendImage('contact_us', @$contactContent->background_image) }}">
         <div class="container">
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-12">
                     @include('Template::partials.breadcumb')
                 </div>
-            </div> --}}
+            </div>
             <div class="row gy-4 justify-content-center">
                 <div class="col-xxl-5 col-xl-5 col-lg-6">
                     <div class="contact-content">
@@ -57,29 +27,27 @@
                                 <span class="title wow fadeInUp" data-wow-duration="0.5s"
                                     data-wow-delay="0.5s">@lang('Phone')</span>
                                 <a class="info wow fadeInUp" data-wow-duration="0.55s" data-wow-delay="0.55s"
-                                    href="tel:{{ str_replace(' ', '', 9582210289) }}">
-                                    9582210289
-                                    {{-- {{ $contactContent->mobile_number }} --}}
+                                    href="tel:{{ str_replace(' ', '', $contactContent->mobile_number) }}">
+                                    {{ $contactContent->mobile_number }}
                                 </a>
                             </div>
                             <div class="contact-item">
                                 <span class="title wow fadeInUp" data-wow-duration="0.6s"
                                     data-wow-delay="0.6s">@lang('Email')</span>
                                 <a class="info wow fadeInUp" data-wow-duration="0.65s" data-wow-delay="0.65s"
-                                    href="mailto:{{ " complaints@yellowrides.com" }}">
-                                    complaints@yellowrides.com
-                                    {{-- {{ $contactContent->email }} --}}
+                                    href="mailto:{{ $contactContent->email }}">
+                                    {{ $contactContent->email }}
                                 </a>
                             </div>
-                            {{-- <div class="contact-item">
+                            <div class="contact-item">
                                 <span class="title wow fadeInUp" data-wow-duration="0.7s"
                                     data-wow-delay="0.7s">@lang('Office')</span>
                                 <span class="info wow fadeInUp" data-wow-duration="0.75s" data-wow-delay="0.75s">
                                     {{ $contactContent->location }}
                                 </span>
-                            </div> --}}
+                            </div>
                         </div>
-                        {{-- <a href="{{ $contactContent->map_link }}" target="_blank" class="contact-content__map wow fadeInUp"
+                        <a href="{{ $contactContent->map_link }}" target="_blank" class="contact-content__map wow fadeInUp"
                             data-wow-duration="0.8s" data-wow-delay="0.8s">
                             @lang('See on Google Map')
                             <span class="icon">
@@ -91,7 +59,7 @@
                                         stroke-linejoin="round" />
                                 </svg>
                             </span>
-                        </a> --}}
+                        </a>
                     </div>
                 </div>
                 <div class="col-xxl-6 offset-xxl-1 col-xl-7 col-lg-6">
@@ -135,16 +103,12 @@
                                     <div class="form-group wow fadeInUp" data-wow-duration="0.7s" data-wow-delay="0.7s">
                                         <button type="submit" class="btn btn--base-two w-100">@lang('Submit')</button>
                                     </div>
-                                    @if(session('success'))
-                                    
-                                    <p style="color: green"> {{ session('success') }}</p>
-                                    @endif
                                 </div>
                                 <div class="col-12">
                                     <p class="contact-form__form-desc wow fadeInUp" data-wow-duration="0.75s"
                                         data-wow-delay="0.75s">
-                                        {{-- @lang('By contacting us, you agree to our') --}}
-                                        {{-- @foreach ($links as $link)
+                                        @lang('By contacting us, you agree to our')
+                                        @foreach ($links as $link)
                                             <a class="link" target="_blank"
                                                 href="{{ route('policy.pages', @$link->slug) }}">
                                                 {{ __(@$link->data_values->title) }}
@@ -152,7 +116,7 @@
                                             @if (!$loop->last)
                                                 <span>@lang('and')</span>
                                             @endif
-                                        @endforeach --}}
+                                        @endforeach
                                     </p>
                                 </div>
                             </div>
@@ -168,7 +132,7 @@
             @include($activeTemplate . 'sections.' . $sec)
         @endforeach
     @endif
-{{-- @endsection --}}
+@endsection
 
 @push('script')
     <script>
@@ -178,7 +142,3 @@
         })(jQuery);
     </script>
 @endpush
-
-</body>
-
-</html>
