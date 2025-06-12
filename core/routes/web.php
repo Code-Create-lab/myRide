@@ -8,9 +8,9 @@ Route::get('/clear', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
 });
 
-Route::get('/', function(){
-    return view('index');
-    })->name('home');
+// Route::get('/', function(){
+//     return view('index');
+//     })->name('home');
 
     Route::get('/cancel_ride', [CronController::class, 'cancelRide'])->name('cancel_ride');
 
@@ -45,7 +45,7 @@ Route::controller('SiteController')->group(function () {
     Route::get('maintenance-mode', 'maintenance')->withoutMiddleware('maintenance')->name('maintenance');
 
     Route::get('/{slug}', 'pages')->name('pages');
-    // Route::get('/', 'index')->name('home');
+    Route::get('/', 'index')->name('home');
 
     // Route::get('/', function () {
 
