@@ -49,11 +49,11 @@ class DriverController extends Controller
         $rides = null;
         // dd($getDriver, @$driver->service_id, $driver->id);
         if($getDriver){
-            
-            
-            
+
+
+
             if ($driver->online_status  == Status::YES && $driver->dv == Status::VERIFIED && $driver->vv == Status::VERIFIED) {
-               
+
                 $rides = Ride::where('pickup_zone_id', $driver->zone_id)
                 ->pending()
                 // ->notRunning()
@@ -117,7 +117,7 @@ class DriverController extends Controller
 
         // dd($request->status == "true" ? 1 : 0);
         $driver->online_status = $request->status == "true" ? 1 : 0;
-        
+
         if($request->status == "false"){
 
             $driver->vv = 0;
@@ -126,15 +126,15 @@ class DriverController extends Controller
             $updateVehicleSession = VehicleSession::where('driver_id', auth()->user()->id)->where('login_in_time', '<', Carbon::now())->orderBy('login_in_time', 'desc')->first();
 
             if($updateVehicleSession){
-    
-            
+
+
             // if(!$updateVehicleSession){
             //     $notify[] = 'Session not found';
             //     return apiResponse("logout", "success", $notify);
             // }
             // dd( $updateVehicleSession,$updateVehicleSession->vehicle_id);
             Vehicle::where('id', $updateVehicleSession->vehicle_id)->update(['is_occupied' => 0]);
-    
+
             $updateVehicleSession->login_out_time = Carbon::now();
             $updateVehicleSession->save();
             }
@@ -189,7 +189,7 @@ class DriverController extends Controller
         $form     = Form::where('act', 'driver_verification')->first();
         $notify[] = 'Driver verification field is below';
 
-       
+
 
         return apiResponse("vehicle_form", "success", $notify, [
             'form'      => $form->form_data,
@@ -297,7 +297,7 @@ class DriverController extends Controller
         ]);
     }
 
-    public function driverDataSubmit(Request $request)
+   public function driverDataSubmit(Request $request)
     {
         $driver = auth()->user();
 
@@ -313,14 +313,12 @@ class DriverController extends Controller
 
 
         $validator = Validator::make($request->all(), [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            // 'country_code' => 'in:' . $countryCodes,
-            // 'country'      => 'in:' . $countries,
-            // 'mobile_code'  => 'in:' . $mobileCodes,
-            // 'zone'         => 'integer',
-            // 'username'     => 'unique:drivers,username|min:6',
-            // 'mobile'       => ['required', 'regex:/^([0-9]*)$/', Rule::unique('drivers')->where('dial_code', $request->mobile_code)],
+            'country_code' => 'required|in:' . $countryCodes,
+            'country'      => 'required|in:' . $countries,
+            'mobile_code'  => 'required|in:' . $mobileCodes,
+            'zone'         => 'required|integer',
+            'username'     => 'required|unique:drivers,username|min:6',
+            'mobile'       => ['required', 'regex:/^([0-9]*)$/', Rule::unique('users')->where('dial_code', $request->mobile_code)],
         ]);
 
         if ($validator->fails()) {
@@ -332,26 +330,23 @@ class DriverController extends Controller
             return apiResponse("validation_error", "error", $notify);
         }
 
-        // $zone = Zone::active()->where('id', $request->zone)->first();
+        $zone = Zone::active()->where('id', $request->zone)->first();
 
-        // if (!$zone) {
-        //     $notify[] = 'The zone not found';
-        //     return apiResponse("not_found", "error", $notify);
-        // }
+        if (!$zone) {
+            $notify[] = 'The zone not found';
+            return apiResponse("not_found", "error", $notify);
+        }
 
-        
-        $driver->firstName = $request->firstName;
-        $driver->lastName = $request->lastName;
-        $driver->email = $request->email;
-        // $driver->mobile       = $request->mobile;
-        // $driver->username     = $request->username;
-        // $driver->address      = $request->address;
-        // $driver->city         = $request->city;
-        // $driver->state        = $request->state;
-        // $driver->zip          = $request->zip;
-        // $driver->country_name = @$request->country;
-        // $driver->dial_code    = $request->mobile_code;
-        // $driver->zone_id      = $request->zone;
+        $driver->country_code = $request->country_code;
+        $driver->mobile       = $request->mobile;
+        $driver->username     = $request->username;
+        $driver->address      = $request->address;
+        $driver->city         = $request->city;
+        $driver->state        = $request->state;
+        $driver->zip          = $request->zip;
+        $driver->country_name = @$request->country;
+        $driver->dial_code    = $request->mobile_code;
+        $driver->zone_id      = $request->zone;
 
         $driver->profile_complete = Status::YES;
         $driver->save();
@@ -412,7 +407,7 @@ class DriverController extends Controller
 
 
             // dd($updateVehicleSession );
-       
+
         $validator = Validator::make($request->all(), [
             'driver_id' => 'required',
             'vehicle_Id'  => 'required',
