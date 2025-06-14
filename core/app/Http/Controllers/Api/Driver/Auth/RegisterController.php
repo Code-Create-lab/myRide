@@ -102,8 +102,10 @@ class RegisterController extends Controller
         $driver->lastname  = $data['lastname'];
         $driver->email     = strtolower($data['email']);
         $driver->password  = Hash::make($data['password']);
-        $driver->ev        = gs('ev') ? Status::UNVERIFIED : Status::VERIFIED;
-        $driver->sv        = gs('sv') ? Status::UNVERIFIED : Status::VERIFIED;
+        $driver->ev        =  Status::UNVERIFIED;
+        $driver->sv        =  Status::UNVERIFIED;
+        // $driver->ev        = gs('ev') ? Status::UNVERIFIED : Status::VERIFIED;
+        // $driver->sv        = gs('sv') ? Status::UNVERIFIED : Status::VERIFIED;
         $driver->ts        = Status::DISABLE;
         $driver->tv        = Status::VERIFIED;
 
