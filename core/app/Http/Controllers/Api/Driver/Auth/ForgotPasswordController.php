@@ -70,10 +70,10 @@ class ForgotPasswordController extends Controller
         }
 
         $code = $request->code;
-        // if (PasswordReset::where('token', $code)->where('email', $request->email)->count() != 1) {
-        //     $notify[] = 'Verification code doesn\'t match';
-        //     return apiResponse("code_not_match", "error", $notify);
-        // }
+        if (PasswordReset::where('token', $code)->where('email', $request->email)->count() != 1) {
+            $notify[] = 'Verification code doesn\'t match';
+            return apiResponse("code_not_match", "error", $notify);
+        }
         $response[] = 'You can change your password.';
         return apiResponse("success", "success", $response);
     }
@@ -86,13 +86,12 @@ class ForgotPasswordController extends Controller
             return apiResponse("validation_error", "error", $validator->errors()->all());
         }
         $reset = PasswordReset::where('token', $request->token)->orderBy('created_at', 'desc')->first();
-        // if (!$reset) {
-        //     $response[] = 'Invalid verification code';
-        //     return apiResponse("invalid_code", "error", $response);
-        // }
+        if (!$reset) {
+            $response[] = 'Invalid verification code';
+            return apiResponse("invalid_code", "error", $response);
+        }
 
-        // $driver           = Driver::where('email', $reset->email)->first();
-        $driver           = Driver::where('email', $request->email)->first();
+        $driver           = Driver::where('email', $reset->email)->first();
         $driver->password = Hash::make($request->password);
         $driver->save();
 

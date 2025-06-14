@@ -5,11 +5,7 @@ namespace App\Http\Controllers\Api\Driver\Auth;
 use App\Constants\Status;
 use App\Http\Controllers\Controller;
 use App\Lib\SocialLogin;
-use App\Models\Driver;
 use App\Models\UserLogin;
-use App\Models\Vehicle;
-use App\Models\VehicleSession;
-use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,10 +56,7 @@ class LoginController extends Controller
 
         $credentials = request([$this->username, 'password']);
 
-      
         if (!Auth::guard('driver')->attempt(array_merge($credentials, ['is_deleted' => Status::NO]))) {
-
-            // dd($credentials);
             $response[] = 'The provided credentials can not match our record';
             return apiResponse("invalid_credential", "error", $response);
         }
@@ -71,27 +64,6 @@ class LoginController extends Controller
         $driver        = $request->user('driver');
         $tokenResult = $driver->createToken('driver_token', ['driver'])->plainTextToken;
         $this->authenticated($request, $driver);
-
-
-        $existingDriver = Driver::where('id', $driver->id)->first();
-        
-        if ($existingDriver && $existingDriver->employee_code) {
-            $response[] = 'Login Successful';
-
-        return apiResponse("login_success", "success", $response, [
-            'driver'       => $driver,
-            'access_token' => $tokenResult,
-            'token_type'   => 'Bearer'
-        ]);
-        }
-
-        // Generate code based on existing driver ID
-        $mappedEmployeeCode = "YRIDES" . str_pad($driver->id, 8, '0', STR_PAD_LEFT);
-        Driver::where('id', $driver->id)->update(['employee_code' => $mappedEmployeeCode]);
-
-        
-
-
         $response[] = 'Login Successful';
 
         return apiResponse("login_success", "success", $response, [
@@ -104,20 +76,7 @@ class LoginController extends Controller
     public function findusername()
     {
         $login     = request()->input('username');
-        // $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-
-        if(filter_var($login, FILTER_VALIDATE_EMAIL) ){
-            $fieldType = 'email';
-        }elseif(preg_match('/^YRIDES\d{8}$/', $login)) {
-
-            $fieldType = 'employee_code';
-        }else{
-
-            $fieldType =    'username';
-        }
-        
-
-        // dd( $login , $fieldType   );
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         request()->merge([$fieldType => $login]);
         return $fieldType;
     }
@@ -128,7 +87,8 @@ class LoginController extends Controller
     }
 
     protected function validateLogin(Request $request)
-    {        $validationRule = [
+    {
+        $validationRule = [
             $this->username() => 'required|string',
             'password'        => 'required|string',
         ];
@@ -138,26 +98,8 @@ class LoginController extends Controller
 
     public function logout()
     {
-        // auth()->user()->tokens()->delete();
+        auth()->user()->tokens()->delete();
 
-        $updateVehicleSession = VehicleSession::where('driver_id', auth()->user()->id)->where('login_in_time', '<', Carbon::now())->orderBy('login_in_time', 'desc')->first();
-
-        if($updateVehicleSession){
-
-        
-        // if(!$updateVehicleSession){
-        //     $notify[] = 'Session not found';
-        //     return apiResponse("logout", "success", $notify);
-        // }
-        // dd( $updateVehicleSession,$updateVehicleSession->vehicle_id);
-        Vehicle::where('id', $updateVehicleSession->vehicle_id)->update(['is_occupied' => 0]);
-
-        $updateVehicleSession->login_out_time = Carbon::now();
-        $updateVehicleSession->save();
-
-        Driver::where('id', auth()->user()->id)->update(['vv' => Status::UNVERIFIED, 'online_status' => 0]);
-
-        }
         $notify[] = 'Logout Successful';
         return apiResponse("logout", "success", $notify);
     }
