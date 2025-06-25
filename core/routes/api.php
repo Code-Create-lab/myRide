@@ -150,9 +150,9 @@ Route::namespace('Api\Driver')->prefix('driver')->group(function () {
         Route::middleware('registration.complete')->group(function () {
             Route::controller('AuthorizationController')->group(function () {
                 Route::get('authorization', 'authorization');
-                // Route::get('resend-verify/{type}', 'sendVerifyCode');
+                Route::get('resend-verify/{type}', 'sendVerifyCode');
                 Route::post('verify-email', 'emailVerification');
-                // Route::post('verify-mobile', 'mobileVerification');
+                Route::post('verify-mobile', 'mobileVerification');
                 Route::post('verify-g2fa', 'g2faVerification');
             });
 
@@ -247,6 +247,6 @@ Route::namespace('Api\Driver')->prefix('driver')->group(function () {
         });
         Route::get('logout', 'Auth\LoginController@logout');
     });
-    Route::post('resend-verify/{type}', 'AuthorizationController@sendVerifyCode');
-    Route::post('verify-mobile', 'AuthorizationController@mobileVerification');
+    // Route::post('resend-verify/{type}', 'AuthorizationController@sendVerifyCode');
+    // Route::post('verify-mobile', 'AuthorizationController@mobileVerification');
 });
