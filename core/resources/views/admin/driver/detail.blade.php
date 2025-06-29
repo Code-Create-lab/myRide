@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('panel')
     <div class="row responsive-row">
-        <div class="col-xxl-7">
+        <div class="col-xxl-6">
             <div class="card h-100">
                 <div class="card-body">
                     <div class="user-detail">
@@ -11,7 +11,7 @@
                             </div>
                             <div class="user-detail__user-info">
                                 <h5 class="user-detail__name mb-1">{{ __($driver->fullname) }}</h5>
-                                {{-- <p class="user-detail__username">{{ '@' . $driver->username }}</p> --}}
+                                <p class="user-detail__username">{{ '@' . $driver->username }}</p>
                             </div>
                         </div>
                         <div class="row gy-4 align-items-center">
@@ -25,19 +25,19 @@
                                         <span>@lang('Mobile number'): </span>
                                         <span>{{ $driver->mobileNumber }}</span>
                                     </li>
-                                    {{-- <li class="item">
+                                    <li class="item">
                                         <span>@lang('Country'): </span>
                                         <span>{{ __($driver->country_name) }}</span>
-                                    </li> --}}
-                                    {{-- <li class="item">
+                                    </li>
+                                    <li class="item">
                                         <span>@lang('Current Zone'): </span>
                                         <span>{{ __(@$driver->zone->name) }}</span>
-                                    </li> --}}
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
                                 <ul class="user-detail__verification">
-                                    {{-- <li class="item">
+                                    <li class="item">
                                         <span>@lang('Email Verification')</span>
                                         <span>
                                             @if ($driver->ev)
@@ -46,8 +46,8 @@
                                                 <i class="fas fa-times-circle text--danger"></i>
                                             @endif
                                         </span>
-                                    </li> --}}
-                                    {{-- <li class="item">
+                                    </li>
+                                    <li class="item">
                                         <span>@lang('Mobile Verification')</span>
                                         <span>
                                             @if ($driver->sv)
@@ -56,7 +56,7 @@
                                                 <i class="fas fa-times-circle text--danger"></i>
                                             @endif
                                         </span>
-                                    </li> --}}
+                                    </li>
                                     <li class="item">
                                         <span>@lang('Document Verification')</span>
                                         <span>
@@ -67,7 +67,7 @@
                                             @endif
                                         </span>
                                     </li>
-                                    {{-- <li class="item">
+                                    <li class="item">
                                         <span>@lang('Vehicle Document Verification')</span>
                                         <span>
                                             @if ($driver->vv == Status::VERIFIED)
@@ -76,7 +76,7 @@
                                                 <i class="fas fa-times-circle text--danger"></i>
                                             @endif
                                         </span>
-                                    </li> --}}
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xxl-5" style="display: ">
+        <div class="col-xxl-6">
             <div class="card shadow-none h-100 ">
                 <div class="card-header border-0">
                     <h5 class="card-title">@lang('Financial Overview')</h5>
@@ -92,7 +92,7 @@
                 <div class="card-body">
                     <div class="widget-card-wrapper custom-widget-wrapper">
                         <div class="row g-0">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="widget-card widget--primary">
                                     <a href="{{ route('admin.report.driver.transaction') }}?driver_id={{ $driver->id }}"
                                         class="widget-card-link"></a>
@@ -115,7 +115,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="widget-card widget--success">
                                     <a href="{{ route('admin.report.rider.payment') }}?driver_id={{ $driver->id }}"
                                         class="widget-card-link"></a>
@@ -138,7 +138,7 @@
                                     </span>
                                 </div>
                             </div>
-                            {{-- <div class="col-sm-6">
+                            <div class="col-sm-6">
                                 <div class="widget-card widget--success">
                                     <a href="{{ route('admin.deposit.list') }}?driver_id={{ $driver->id }}"
                                         class="widget-card-link"></a>
@@ -184,7 +184,7 @@
                                         <i class="fas fa-chevron-right"></i>
                                     </span>
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -247,7 +247,7 @@
                                 <div class="form-group">
                                     <label>@lang('Email')</label>
                                     <input class="form-control" type="email" name="email"
-                                        value="{{ $driver->email }}" >
+                                        value="{{ $driver->email }}" required>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
@@ -302,10 +302,10 @@
                                         value="{{ @$driver->zip }}">
                                 </div>
                             </div>
-                            {{-- <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-3 col-md-6">
                                 <div class="form-group">
                                     <label>@lang('Country') <span class="text--danger">*</span></label>
-                                    <select name="country" class="form-control select2" disabled>
+                                    <select name="country" class="form-control select2">
                                         @foreach ($countries as $key => $country)
                                             <option data-mobile_code="{{ $country->dial_code }}"
                                                 value="{{ $key }}" @selected($driver->country_code == $key)>
@@ -313,10 +313,10 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
-                    {{-- <div class="card-footer">
+                    <div class="card-footer">
                         <div class="verification-switch">
                             <div class="verification-switch__item d-flex justify-content-between align-items-center gap-2">
                                 <label class="form-check-label fw-500" for="email_verification">@lang('Email Verification')</label>
@@ -363,7 +363,7 @@
                         <div class="d-block d-md-none mt-3">
                             <x-admin.ui.btn.submit disabled="disabled" class="disabled" text="Update" />
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
             </form>
         </div>
@@ -418,32 +418,30 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-xxl-12">
+        <div class="col-xxl-8">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center gap-3">
                     <h5 class="card-title mb-0">@lang('Vehicle Information')</h5>
-                    {{-- @php echo $driver->vehicleVerificationBadge; @endphp --}}
+                    @php echo $driver->vehicleVerificationBadge; @endphp
                 </div>
                 <div class="card-body">
-                    {{-- @if (!blank(@$driver->vehicle_data)) --}}
+                    @if (!blank(@$driver->vehicle_data))
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap ps-0">
                                 <span>@lang('Service')</span>
-                                {{-- <span> {{ __(@$driver->service->name) }} </span> --}}
+                                <span> {{ __(@$driver->service->name) }} </span>
                             </li>
-                            {{-- <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap ps-0">
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap ps-0">
                                 <span>@lang('Brand')</span>
                                 <span>{{ __(@$driver->brand->name) }}</span>
-                            </li> --}}
-                            {{-- @foreach ($driver->vehicle_data as $val)
-                                @continue(!$val->value) --}}
+                            </li>
+                            @foreach ($driver->vehicle_data as $val)
+                                @continue(!$val->value)
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center flex-wrap ps-0">
+                                    <span>{{ __(keyToTitle($val->name)) }}</span>
                                     <span>
-                                        {{-- {{ __(keyToTitle($val->name)) }} --}}
-                                        </span>
-                                    <span>
-                                        {{-- @if ($val->type == 'checkbox')
+                                        @if ($val->type == 'checkbox')
                                             {{ implode(',', $val->value) }}
                                         @elseif($val->type == 'file')
                                             <a
@@ -452,66 +450,35 @@
                                             </a>
                                         @else
                                             <p>{{ __($val->value) }}</p>
-                                        @endif --}}
+                                        @endif
                                     </span>
                                 </li>
-                            {{-- @endforeach --}}
+                            @endforeach
                         </ul>
-                    {{-- @else --}}
+                    @else
                         <div class="p-5 d-flex justify-content-center align-items-center flex-column h-100">
                             <img src="{{ asset('assets/images/empty_box.png') }}" class="empty-message">
                             <span class="d-block fs-14 text-muted">@lang('No vehicle information driver is added')</span>
                         </div>
-                    {{-- @endif --}}
+                    @endif
 
-                    {{-- @if (!blank(@$driver->vehicle_data) && $driver->vv == Status::PENDING) --}}
+                    @if (!blank(@$driver->vehicle_data) && $driver->vv == Status::PENDING)
                         <div class=" d-flex gap-2 flex-lg-wrap mt-3">
                             <button class="btn btn--success confirmationBtn" data-question="@lang('Are you sure to approve this document?')"
-                                {{-- data-action="{{ route('admin.driver.vehicle.approve', $driver->id) }}"> --}}
+                                data-action="{{ route('admin.driver.vehicle.approve', $driver->id) }}">
                                 <i class="las la-check me-1"></i>@lang('Approve')
                             </button>
                             <button class="btn btn--danger confirmationBtn" data-question="@lang('Are you sure to reject this driver document?')"
-                                {{-- data-action="{{ route('admin.driver.vehicle.reject', $driver->id) }}"> --}}
+                                data-action="{{ route('admin.driver.vehicle.reject', $driver->id) }}">
                                 <i class="las la-ban me-1"></i>@lang('Reject')
                             </button>
                         </div>
-                    {{-- @endif --}}
+                    @endif
 
                 </div>
             </div>
-        </div> -->
-
-        <div class="col-xxxl-12">
-
-            {{-- @dd($driver->reviews) --}}
-
-            @if ($driver->reviews)
-            <div class="card mt-4">
-                <div class="card-body">
-                    <h5 class="card-title">@lang('Rider Review & Rating')</h5>
-                    <ul class="list-group list-group-flush">
-                        @foreach($driver->reviews as $review)
-
-                       
-                        <li class="list-group-item d-flex justify-content-between ps-0 flex-wrap">
-                            <span>@lang('Review') / @lang('Rating')</span>
-                            <span> Ride-Id  <a href="{{ route('admin.rides.detail',$review->ride->id ) }}" style="font-weight: bold">  {{ $review->ride->uid }} </a> </span>
-                            <span> {{ __($review->review) }} </span>
-                            <span> {{ $review->rating }} </span>
-                         <a href="{{  route('admin.reviews.delete', $review->id )}}">  <button class="btn-danger btn text-white" style="color: white !important">Delete</button></a> 
-                        </li>
-                        {{-- <li class="list-group-item d-flex justify-content-between ps-0 flex-wrap">
-                            <span>@lang('Review')</span>
-                           
-                        </li> --}}
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        @endif
-
-    </div>
-        {{-- <div class="col-xxl-4">
+        </div>
+        <div class="col-xxl-4">
             <div class="card h-100">
                 <div class="card-header d-flex justify-content-between align-items-center gap-3">
                     <h5 class="card-title mb-0">@lang('Rules')</h5>
@@ -533,7 +500,7 @@
                     @endif
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 
     <x-admin.ui.modal id="driverStatusModal">
@@ -626,12 +593,12 @@
 
 @push('breadcrumb-plugins')
     <div class=" d-flex gap-2  flex-wrap">
-        {{-- <button type="button" class=" flex-fill btn  btn--success balance-adjust" data-act="add">
+        <button type="button" class=" flex-fill btn  btn--success balance-adjust" data-act="add">
             <i class="las la-plus me-1"></i>@lang('Balance')
         </button>
         <button type="button" class="flex-fill btn  btn--danger balance-adjust" data-act="sub">
             <i class="las la-minus-circle me-1"></i>@lang('Balance')
-        </button> --}}
+        </button>
 
         @if ($driver->status == Status::USER_ACTIVE)
             <button type="button" class="flex-fill btn  btn--warning" data-bs-toggle="modal"
@@ -644,10 +611,10 @@
                 <i class="las la-ban me-1"></i>@lang('Unban Driver')
             </button>
         @endif
-        {{-- <a href="{{ route('admin.report.driver.notification.history') }}?driver_id={{ $driver->id }}"
+        <a href="{{ route('admin.report.driver.notification.history') }}?driver_id={{ $driver->id }}"
             class="flex-fill btn  btn--secondary">
             <i class="las la-bell me-1"></i>@lang('Notifications')
-        </a> --}}
+        </a>
     </div>
 @endpush
 
