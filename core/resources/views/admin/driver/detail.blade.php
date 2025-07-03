@@ -436,20 +436,22 @@
                                 <span>{{ __(@$driver->brand->name) }}</span>
                             </li>
                             @foreach ($driver->vehicle_data as $val)
-                                @continue(!$val->value)
+                            {{-- @dd($val) --}}
+
+                                @continue(!$val['value'])
                                 <li
                                     class="list-group-item d-flex justify-content-between align-items-center flex-wrap ps-0">
-                                    <span>{{ __(keyToTitle($val->name)) }}</span>
+                                    <span>{{ __(keyToTitle($val->name ?? "")) }}</span>
                                     <span>
                                         @if ($val->type == 'checkbox')
-                                            {{ implode(',', $val->value) }}
+                                            {{ implode(',', $val->value ?? "") }}
                                         @elseif($val->type == 'file')
                                             <a
                                                 href="{{ route('admin.download.attachment', encrypt(getFilePath('verify') . '/' . $val->value)) }}">
                                                 <i class="fa fa-file"></i> @lang('Attachment')
                                             </a>
                                         @else
-                                            <p>{{ __($val->value) }}</p>
+                                            <p>{{ __($val->value ?? "") }}</p>
                                         @endif
                                     </span>
                                 </li>
