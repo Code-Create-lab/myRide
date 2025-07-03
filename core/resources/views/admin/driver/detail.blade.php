@@ -445,7 +445,7 @@
                                     <span>
                                         @if ($val->type ?? "" == 'checkbox')
                                             {{ implode(',', $val->value ?? "") }}
-                                        @elseif($val->type == 'file')
+                                        @elseif($val->type ?? "" == 'file')
                                             <a
                                                 href="{{ route('admin.download.attachment', encrypt(getFilePath('verify') . '/' . $val->value)) }}">
                                                 <i class="fa fa-file"></i> @lang('Attachment')
