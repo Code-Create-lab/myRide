@@ -443,7 +443,7 @@
                                     class="list-group-item d-flex justify-content-between align-items-center flex-wrap ps-0">
                                     <span>{{ __(keyToTitle($val->name ?? "")) }}</span>
                                     <span>
-                                        @if ($val->type == 'checkbox')
+                                        @if ($val->type ?? "" == 'checkbox')
                                             {{ implode(',', $val->value ?? "") }}
                                         @elseif($val->type == 'file')
                                             <a
