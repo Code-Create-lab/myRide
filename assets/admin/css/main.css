@@ -3163,6 +3163,11 @@ input[type=number] {
     flex-direction: column;
 }
 
+
+span.dashboard-nav__link-text {
+    color: white !important;
+}
+
 [data-theme=dark] .dashboard .dashboard__sidebar-area {
     background-color: hsl(var(--light));
 }
