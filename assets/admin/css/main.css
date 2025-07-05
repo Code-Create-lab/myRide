@@ -3156,12 +3156,17 @@ input[type=number] {
 
 .dashboard .dashboard__sidebar-area {
     /* background-color: hsl(var(--white)) !important; */
-    background-color: #52C498 !important;
+    background-color: #a4d9c4 !important;
     height: 100vh;
     position: sticky;
     top: 0;
     display: flex;
     flex-direction: column;
+}
+
+
+.widget.widget-four {
+    background-color: #dbe0e7;
 }
 
 
