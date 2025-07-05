@@ -3155,7 +3155,7 @@ input[type=number] {
 }
 
 .dashboard .dashboard__sidebar-area {
-    background-color: hsl(var(--white));
+    background-color: hsl(var(--white)) !important;
     height: 100vh;
     position: sticky;
     top: 0;
