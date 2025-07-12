@@ -236,8 +236,9 @@ class RideController extends Controller
     public function receivedCashPayment($id)
     {
         $driver = auth()->user();
-        $ride   = Ride::where('status', Status::RIDE_COMPLETED)->where('driver_id', $driver->id)->find($id);
+        $ride   = Ride::where('driver_id', $driver->id)->find($id);
 
+        // where('status', Status::RIDE_COMPLETED)->
         if (!$ride) {
             $notify[] = 'The ride not found';
             return apiResponse('not_found', 'error', $notify);
