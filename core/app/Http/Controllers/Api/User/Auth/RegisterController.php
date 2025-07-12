@@ -78,26 +78,26 @@ class RegisterController extends Controller
             return apiResponse("validation_error", "error", $validator->errors()->all());
         }
         // dd('asdasd');
-        $apiUrl = 'http://admagister.net/api/mt/SendSMS';
-            // Generate a 4-digit random OTP
-            $otp = rand(100000, 999999);
-            // $txt = "Your OTP for Yellow Rides is " . $otp . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
+        // $apiUrl = 'http://admagister.net/api/mt/SendSMS';
+        //     // Generate a 4-digit random OTP
+        //     $otp = rand(100000, 999999);
+        //     $txt = "Your OTP for Yellow Rides is " . $otp . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
 
-            // // API parameters
-            // $params = [
-            //     'channel' => 'Trans',
-            //     'DCS' => 0,
-            //     'flashsms' => 9,
-            //     'number' => '91' . $request->mobile,
-            //     'user' => 'YELLOW2025',
-            //     'password' => 'YELLOW2025', // Replace with the actual password
-            //     'text' => $txt,
-            //     'route' => 30,
-            //     'senderid' => 'JSRIPL',
-            // ];
+        //     // API parameters
+        //     $params = [
+        //         'channel' => 'Trans',
+        //         'DCS' => 0,
+        //         'flashsms' => 9,
+        //         'number' => '91' . $request->mobile,
+        //         'user' => 'YELLOW2025',
+        //         'password' => 'YELLOW2025', // Replace with the actual password
+        //         'text' => $txt,
+        //         'route' => 30,
+        //         'senderid' => 'JSRIPL',
+        //     ];
 
-            // // Send the SMS using Laravel's HTTP client
-            // $sms = Http::get($apiUrl, $params);
+        //     // Send the SMS using Laravel's HTTP client
+        //     $sms = Http::get($apiUrl, $params);
 
 
 
