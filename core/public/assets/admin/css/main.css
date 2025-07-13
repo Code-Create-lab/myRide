@@ -3679,9 +3679,10 @@ body:has(.account) {
 .account__card {
     max-width: var(--width);
     flex: 1;
-    background-color: hsl(var(--white));
+    /* background-color: hsl(var(--white)); */
     border-radius: 6px;
     padding: 65px;
+     background-color: #a4d9c4 !important;
 }
 
 @media screen and (max-width:690px) {
