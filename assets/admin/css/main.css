@@ -2415,6 +2415,7 @@ input[type=number] {
     border-collapse: collapse;
     border-collapse: separate;
     border-spacing: 0px 0px;
+    background-color: #a4d9c4 !important;
 }
 
 .table thead tr th {
@@ -3692,6 +3693,7 @@ body:has(.account) {
     background-color: hsl(var(--white));
     border-radius: 6px;
     padding: 65px;
+    background-color: #a4d9c4 !important;
 }
 
 @media screen and (max-width:690px) {
