@@ -130,7 +130,7 @@
                 @endforeach
             </ul>
         </div> --}}
-        <div class="header-dropdown">
+        {{-- <div class="header-dropdown">
             <button class=" dropdown-toggle header-dropdown__icon" type='button' data-bs-toggle="tooltip"
                 title="@lang('Theme')" id="switch-theme">
                 <span class=" dark-show">
@@ -140,7 +140,7 @@
                     <i class="las la-sun"></i>
                 </span>
             </button>
-        </div>
+        </div> --}}
         {{-- <div class="notification header-dropdown">
             <button class="dropdown-toggle header-dropdown__icon" data-bs-toggle="dropdown" aria-expanded="false"
                 data-bs-auto-close="outside">
