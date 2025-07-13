@@ -36,8 +36,8 @@ class BidController extends Controller
         }
 
         $driver = Driver::where('online_status', Status::YES)
-            ->where('zone_id', $ride->pickup_zone_id)
-            ->where("service_id", $ride->service_id)
+            // ->where('zone_id', $ride->pickup_zone_id)
+            // ->where("service_id", $ride->service_id)
             ->where('dv', Status::VERIFIED)
             ->where('vv', Status::VERIFIED)
             ->notRunning()
