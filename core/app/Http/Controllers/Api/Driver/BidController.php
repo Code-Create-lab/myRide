@@ -85,13 +85,12 @@ class BidController extends Controller
         //all the bid rejected after the one accept this bid
         Bid::where('id', '!=', $bid->id)->where('ride_id', $bid->ride_id)->update(['status' => Status::BID_REJECTED]);
 
-        if($ride->is_scheduled || $ride->is_scheduled == 1){
+        if ($ride->is_scheduled || $ride->is_scheduled == 1) {
             $ride->status            = 4;
             $ride->payment_status    = 2;
-
         }
 
-        if(!$ride->is_scheduled){
+        if (!$ride->is_scheduled) {
 
             $ride->status    = Status::RIDE_ACTIVE;
         }
@@ -99,53 +98,29 @@ class BidController extends Controller
 
 
 
-       // $ride            = $bid->ride;
-       $ride->driver_id = $bid->driver_id;
-       $ride->otp       = getNumber(4);
-       $ride->amount    = $bid->bid_amount;
-       $ride->save();
+        // $ride            = $bid->ride;
+        $ride->driver_id = $bid->driver_id;
+        $ride->otp       = getNumber(4);
+        $ride->amount    = $bid->bid_amount;
+        $ride->save();
 
 
-       $start_time = Carbon::parse($ride->start_time); // Example start time
-       $end_time = Carbon::parse($ride->end_time);   // Example end time
+        $start_time = Carbon::parse($ride->start_time); // Example start time
+        $end_time = Carbon::parse($ride->end_time);   // Example end time
 
-       $diffInMinutes = number_format($start_time->diffInMinutes($end_time), 2, '.', '');
-
-        // $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        //     ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-        //         "clientId" => "yellow_rides",
-        //         "channel" => "whatsapp",
-        //         "token" => "",
-        //         "send_to" => $ride->user->mobile,
-        //         "button" => false,
-        //         "header" => "",
-        //         "footer" => "",
-        //         "parameters" => [ $ride->uid, $ride->service->name,  $ride->pickup_location, $ride->destination, number_format($ride->distance, 2, '.', ''), number_format($ride->recommend_amount, 2, '.', '')],
-        //         "msg_type" => "TEXT",
-        //         "templateName" => "booking_confirmation",
-        //         "media_url" => "",
-        //         "buttonUrlParam" => "",
-        //         "userName" => "",
-        //         "lang" => "en"
-        //     ]);
-
-        // // Get response
-        // // dd($response->json());
-        // $data['waba_response'] = $response->json();
-
-        // Debug response
+        $diffInMinutes = number_format($start_time->diffInMinutes($end_time), 2, '.', '');
 
 
-    //    dd( $ride,$ride->status);
+        //    dd( $ride,$ride->status);
 
         //$bid->load('driver');
 
         $ride->load('driver', 'driver.brand', 'service', 'user');
 
-       // initializePusher();
+        // initializePusher();
 
 
-     //  event(new NewRide("new-ride-for-driver-$ride->driver_id", ['ride' => $ride], 'bid_accept'));  // ON Accepting RIde from user App
+        //  event(new NewRide("new-ride-for-driver-$ride->driver_id", ['ride' => $ride], 'bid_accept'));  // ON Accepting RIde from user App
 
 
         $data['bid']                = $bid;
@@ -167,14 +142,14 @@ class BidController extends Controller
             event(new NewRide("new-ride-for-driver-$driver->id", ['ride' => $ride], 'ride_accept_driver'));
         }
 
-            //    event(new EventsRide($ride, 'new_bid', $data)); // on Clicking On Create Bid
+        //    event(new EventsRide($ride, 'new_bid', $data)); // on Clicking On Create Bid
         // dd("bid_accept");
 
 
         notify($ride->user, 'ACCEPT_RIDE', [
             'ride_id'         => $ride->uid,
             'amount'          => showAmount($ride->amount),
-            'driver'           => $ride->driver->firstname." ". $ride->driver->lastname,
+            'driver'           => $ride->driver->firstname . " " . $ride->driver->lastname,
             'service'         => $ride->service->name,
             'pickup_location' => $ride->pickup_location,
             'destination'     => $ride->destination,
@@ -210,8 +185,8 @@ class BidController extends Controller
         }
 
         $driver = Driver::where('online_status', Status::YES)
-            ->where('zone_id', $ride->pickup_zone_id)
-            ->where("service_id", $ride->service_id)
+            // ->where('zone_id', $ride->pickup_zone_id)  // for all service and all zone it is commented for demo purpose
+            // ->where("service_id", $ride->service_id)
             ->where('dv', Status::VERIFIED)
             ->where('vv', Status::VERIFIED)
             ->notRunning()
