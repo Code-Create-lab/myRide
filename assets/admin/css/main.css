@@ -3500,7 +3500,7 @@ input[type=number] {
 
 .dashboard .dashboard__header {
     height: calc(var(--header) - (var(--inner-padding)));
-    background-color: hsl(var(--white));
+    background-color: #cef3e4;
     border-radius: var(--border-radios);
     padding: 8px 12px;
     display: flex;
