@@ -80,7 +80,7 @@ class RegisterController extends Controller
         // dd('asdasd');
         // $apiUrl = 'http://admagister.net/api/mt/SendSMS';
         //     // Generate a 4-digit random OTP
-        //     $otp = rand(100000, 999999);
+            $otp = rand(100000, 999999);
         //     $txt = "Your OTP for Yellow Rides is " . $otp . ". Do not share it with anyone. - Yellow Rides. JSRIPL";
 
         //     // API parameters
