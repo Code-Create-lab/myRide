@@ -2414,6 +2414,7 @@ input[type=number] {
     margin: 0;
     border-collapse: collapse;
     border-collapse: separate;
+    background-color: #a4d9c4 !important;
     border-spacing: 0px 0px;
 }
 
@@ -3682,7 +3683,11 @@ body:has(.account) {
     /* background-color: hsl(var(--white)); */
     border-radius: 6px;
     padding: 65px;
-     background-color: #a4d9c4 !important;
+     background-color: #d3f1e5 !important;
+}
+
+.table {
+    background-color: #a4d9c4 !important;
 }
 
 @media screen and (max-width:690px) {

@@ -702,7 +702,7 @@ a {
 }
 
 a:hover {
-    color: hsl(var(--base));
+    color: #26db93;
 }
 
 img {
@@ -802,8 +802,8 @@ button:focus {
 }
 
 .gradient-text {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(hsl(var(--base-d-200))), to(hsl(var(--base))));
-    background-image: linear-gradient(180deg, hsl(var(--base-d-200)) 0%, hsl(var(--base)) 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(hsl(var(--base-d-200))), to(#26db93));
+    background-image: linear-gradient(180deg, hsl(var(--base-d-200)) 0%, #26db93 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -873,13 +873,13 @@ button:focus {
 }
 
 .section-heading__desc .link:hover {
-    color: hsl(var(--base));
+    color: #26db93;
 }
 
 /* ====================== Section Heading Css End ==================== */
 /* ================================= Background Color Css Start =========================== */
 .bg--base {
-    background-color: hsl(var(--base)) !important;
+    background-color: #26db93 !important;
 }
 
 .bg--primary {
@@ -921,7 +921,7 @@ button:focus {
 /* ================================= Background Color Css End =========================== */
 /* ================================= Color Css Start =========================== */
 .text--base {
-    color: hsl(var(--base)) !important;
+    color: #26db93 !important;
 }
 
 .text--primary {
@@ -963,7 +963,7 @@ button:focus {
 /* ================================= Color Css End =========================== */
 /* ================================= Border Color Css Start =========================== */
 .border--base {
-    border-color: hsl(var(--base)) !important;
+    border-color: #26db93 !important;
 }
 
 .border--primary {
@@ -1283,7 +1283,7 @@ button:focus {
 
 .custom--accordion .accordion-button:not(.collapsed)::after {
     background-image: none;
-    color: hsl(var(--base));
+    color: #26db93;
 }
 
 .custom--accordion .accordion-button[aria-expanded=true]::after,
@@ -1431,7 +1431,7 @@ button:focus {
 }
 
 .btn--base {
-    background-color: hsl(var(--base)) !important;
+    background-color: #26db93 !important;
 }
 
 .btn--base:hover,
@@ -1442,13 +1442,13 @@ button:focus {
 
 .btn-outline--base {
     background-color: transparent !important;
-    border: 1px solid hsl(var(--base)) !important;
-    color: hsl(var(--base)) !important;
+    border: 1px solid #26db93 !important;
+    color: #26db93 !important;
 }
 
 .btn-outline--base:hover,
 .btn-outline--base:focus .btn-outline--base:focus-visible {
-    background-color: hsl(var(--base)) !important;
+    background-color: #26db93 !important;
     color: hsl(var(--white)) !important;
 }
 
@@ -1681,8 +1681,8 @@ button:focus {
 .btn--white:hover,
 .btn--white:focus,
 .btn--white:focus-visible {
-    background-color: hsl(var(--base)) !important;
-    border: 1px solid hsl(var(--base)) !important;
+    background-color: #26db93 !important;
+    border: 1px solid #26db93 !important;
     color: hsl(var(--white)) !important;
 }
 
@@ -1711,8 +1711,8 @@ button:focus {
     transform: translate(-50%, -50%);
     width: calc(100% + 2px);
     height: calc(100% + 2px);
-    background: -webkit-gradient(linear, left top, right top, from(hsl(var(--base-two))), to(hsl(var(--base))));
-    background: linear-gradient(90deg, hsl(var(--base-two)) 0%, hsl(var(--base)) 100%);
+    background: -webkit-gradient(linear, left top, right top, from(hsl(var(--base-two))), to(#26db93));
+    background: linear-gradient(90deg, hsl(var(--base-two)) 0%, #26db93 100%);
     border-radius: inherit !important;
     z-index: -1;
     -webkit-transition: 0.2s linear;
@@ -1720,8 +1720,8 @@ button:focus {
 }
 
 .btn--gradient::after {
-    background: -webkit-gradient(linear, left top, right top, from(hsl(var(--base))), to(hsl(var(--base-two))));
-    background: linear-gradient(90deg, hsl(var(--base)) 0%, hsl(var(--base-two)) 100%);
+    background: -webkit-gradient(linear, left top, right top, from(#26db93), to(hsl(var(--base-two))));
+    background: linear-gradient(90deg, #26db93 0%, hsl(var(--base-two)) 100%);
     visibility: hidden;
     opacity: 0;
 }
@@ -1917,7 +1917,7 @@ button:focus {
 }
 
 .form--control:focus {
-    border-color: hsl(var(--base));
+    border-color: #26db93;
 }
 
 .form--control:disabled,
@@ -1982,7 +1982,7 @@ button:focus {
     border: 0;
     padding: 3px 12px;
     border-radius: 3px;
-    background-color: hsl(var(--base)) !important;
+    background-color: #26db93 !important;
     -webkit-transition: 0.2s linear;
     transition: 0.2s linear;
     line-height: 25px;
@@ -1996,7 +1996,7 @@ button:focus {
     border: 0;
     padding: 3px 12px;
     border-radius: 3px;
-    background-color: hsl(var(--base)) !important;
+    background-color: #26db93 !important;
     -webkit-transition: 0.2s linear;
     transition: 0.2s linear;
     line-height: 25px;
@@ -2021,12 +2021,12 @@ button:focus {
 }
 
 .form--control[type=file]::-webkit-file-upload-button:hover {
-    background-color: hsl(var(--base));
+    background-color: #26db93;
     color: hsl(var(--white));
 }
 
 .form--control[type=file]::file-selector-button:hover {
-    background-color: hsl(var(--base));
+    background-color: #26db93;
     color: hsl(var(--white));
 }
 
@@ -2040,7 +2040,7 @@ textarea.form--control {
 }
 
 .select:focus {
-    border-color: hsl(var(--base));
+    border-color: #26db93;
     color: hsl(var(--heading-color)) !important;
 }
 
@@ -2143,12 +2143,12 @@ input[type=number] {
 }
 
 .form--check .form-check-input:hover {
-    border-color: hsl(var(--base));
+    border-color: #26db93;
 }
 
 .form--check .form-check-input:checked {
     background-color: hsl(var(--base)/0.12) !important;
-    border-color: hsl(var(--base)) !important;
+    border-color: #26db93 !important;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -2162,7 +2162,7 @@ input[type=number] {
     content: "\f00c";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    color: hsl(var(--base));
+    color: #26db93;
     font-size: 0.6875rem;
     top: 50%;
     left: 50%;
@@ -2212,7 +2212,7 @@ input[type=number] {
 
 .form--radio .form-check-input:checked {
     background-color: hsl(var(--base)/0.12);
-    border-color: hsl(var(--base));
+    border-color: #26db93;
 }
 
 .form--radio .form-check-input:checked[type=radio] {
@@ -2228,13 +2228,13 @@ input[type=number] {
     transform: translate(-50%, -50%);
     width: 7px;
     height: 7px;
-    background-color: hsl(var(--base));
+    background-color: #26db93;
     border-radius: 2px;
     z-index: 999;
 }
 
 .form--radio .form-check-input:hover {
-    border-color: hsl(var(--base));
+    border-color: #26db93;
 }
 
 .form--radio .form-check-label {
@@ -2297,7 +2297,7 @@ input[type=number] {
 }
 
 .form--switch .form-check-input:checked {
-    background-color: hsl(var(--base)) !important;
+    background-color: #26db93 !important;
 }
 
 .form--switch .form-check-input:checked::before {
@@ -2328,7 +2328,7 @@ input[type=number] {
     border-width: 0;
     height: 100%;
     border-radius: 5px;
-    background-color: hsl(var(--base));
+    background-color: #26db93;
     color: hsl(var(--white));
     font-size: 0.875rem;
     line-height: 1;
@@ -2417,7 +2417,7 @@ input[type=number] {
     width: 35px;
     height: 35px;
     border-radius: 8px 0 8px 0;
-    background: hsl(var(--base));
+    background: #26db93;
     color: hsl(var(--white)/0.8);
     font-size: 1.25rem;
     display: -webkit-box;
@@ -2498,8 +2498,8 @@ input[type=number] {
 
 .custom--modal .modal-icon i {
     font-size: 2rem;
-    color: hsl(var(--base));
-    border: 3px solid hsl(var(--base));
+    color: #26db93;
+    border: 3px solid #26db93;
     width: 50px;
     height: 50px;
     display: -webkit-box;
@@ -2550,7 +2550,7 @@ input[type=number] {
     width: 3px;
     height: 3px;
     border-radius: 3px;
-    background-color: hsl(var(--base));
+    background-color: #26db93;
 }
 
 .custom--modal .modal-alert-icon {
@@ -2584,9 +2584,9 @@ input[type=number] {
 }
 
 .pagination .page-item.active .page-link {
-    background-color: hsl(var(--base));
+    background-color: #26db93;
     color: hsl(var(--white));
-    border-color: hsl(var(--base));
+    border-color: #26db93;
 }
 
 .pagination .page-item .page-link {
@@ -2612,8 +2612,8 @@ input[type=number] {
 
 .pagination .page-item .page-link:hover {
     background-color: transparent;
-    color: hsl(var(--base));
-    border-color: hsl(var(--base));
+    color: #26db93;
+    border-color: #26db93;
 }
 
 .pagination .page-item .page-link:focus {
@@ -2626,21 +2626,21 @@ input[type=number] {
 }
 
 .pagination.three .page-link {
-    border-color: hsl(var(--base));
+    border-color: #26db93;
 }
 
 .pagination.three .page-link:hover {
-    background: hsl(var(--base));
+    background: #26db93;
     color: hsl(var(--white));
 }
 
 .pagination.four .page-link {
     border-radius: 5px;
-    border-color: hsl(var(--base));
+    border-color: #26db93;
 }
 
 .pagination.four .page-link:hover {
-    background: hsl(var(--base));
+    background: #26db93;
     color: hsl(var(--white));
 }
 
@@ -3143,7 +3143,7 @@ input[type=number] {
 }
 
 .custom--tab .nav-item .nav-link:hover {
-    color: hsl(var(--base));
+    color: #26db93;
 }
 
 .custom--tab.two {
@@ -3158,7 +3158,7 @@ input[type=number] {
 .custom--tab.two .nav-item .nav-link::after {
     position: absolute;
     content: "";
-    background: hsl(var(--base));
+    background: #26db93;
     width: 100%;
     height: 1px;
     left: 0;
@@ -3170,7 +3170,7 @@ input[type=number] {
 }
 
 .custom--tab.two .nav-item .nav-link.active {
-    color: hsl(var(--base));
+    color: #26db93;
     background: transparent !important;
 }
 
@@ -3180,7 +3180,7 @@ input[type=number] {
 }
 
 .custom--tab.two .nav-item .nav-link.active:hover::after {
-    background: hsl(var(--base));
+    background: #26db93;
 }
 
 .custom--tab.two .nav-item .nav-link:hover::after {
@@ -3201,7 +3201,7 @@ input[type=number] {
 }
 
 .badge--base {
-    background-color: hsl(var(--base)) !important;
+    background-color: #26db93 !important;
 }
 
 .badge--primary {
@@ -3242,8 +3242,8 @@ input[type=number] {
 
 .badge-outline--base {
     background-color: hsl(var(--base)/0.1) !important;
-    color: hsl(var(--base)) !important;
-    border: 1px solid hsl(var(--base)) !important;
+    color: #26db93 !important;
+    border: 1px solid #26db93 !important;
 }
 
 .badge-outline--primary {
@@ -3345,7 +3345,7 @@ input[type=number] {
 }
 
 .alert--base .alert__link {
-    color: hsl(var(--base));
+    color: #26db93;
 }
 
 .alert--primary {
@@ -3688,7 +3688,7 @@ input[type=number] {
 
 @media (min-width: 992px) {
     .nav-menu .nav-item.active .nav-link {
-        color: hsl(var(--base)) !important;
+        color: #26db93 !important;
     }
 
     .nav-menu .nav-item.active .active {
@@ -3698,7 +3698,7 @@ input[type=number] {
 
 @media (min-width: 992px) {
     .nav-menu .nav-item:hover .nav-link {
-        color: hsl(var(--base)) !important;
+        color: #26db93 !important;
     }
 }
 
@@ -3760,7 +3760,7 @@ input[type=number] {
     }
 
     .nav-menu .nav-item .nav-link.show[aria-expanded=true] {
-        color: hsl(var(--base)) !important;
+        color: #26db93 !important;
     }
 
     .nav-menu .nav-item .nav-link.show[aria-expanded=true] i {
@@ -4048,7 +4048,7 @@ input[type=number] {
 .loader-p:before,
 .loader-p:after {
     content: "";
-    border: 1em solid hsl(var(--base));
+    border: 1em solid #26db93;
     border-radius: 50%;
     width: inherit;
     height: inherit;
@@ -4126,7 +4126,7 @@ input[type=number] {
     cursor: pointer;
     -webkit-transform: scale(0);
     transform: scale(0);
-    background-color: hsl(var(--base));
+    background-color: #26db93;
 }
 
 .scroll-top:hover {
@@ -4222,9 +4222,9 @@ input[type=number] {
 .social-list__link.active,
 .social-list__link:hover,
 .social-list__link:focus {
-    background-color: hsl(var(--base));
+    background-color: #26db93;
     color: hsl(var(--white)) !important;
-    border-color: hsl(var(--base)) !important;
+    border-color: #26db93 !important;
 }
 
 /* ================================= Social Icon Css End ===========================  */
@@ -4270,7 +4270,7 @@ input[type=number] {
     border-radius: 50%;
     -webkit-transition: 0.2s linear;
     transition: 0.2s linear;
-    background-color: hsl(var(--base));
+    background-color: #26db93;
     color: hsl(var(--white));
     font-size: 20px;
 }
@@ -4291,7 +4291,7 @@ input[type=number] {
 }
 
 .slick-arrow:hover {
-    border-color: hsl(var(--base));
+    border-color: #26db93;
     background-color: hsl(var(--base-two));
 }
 
@@ -4373,7 +4373,7 @@ input[type=number] {
 
 .slick-next {
     right: 10px;
-    background-color: hsl(var(--base));
+    background-color: #26db93;
 }
 
 @media screen and (max-width: 767px) {
@@ -4418,10 +4418,10 @@ input[type=number] {
 }
 
 .slick-dots li.slick-active button {
-    background-color: hsl(var(--base));
+    background-color: #26db93;
     width: 25px;
     border-radius: 5px;
-    color: hsl(var(--base));
+    color: #26db93;
 }
 
 /* ================= Slick Slider Css Start ================ */
@@ -5193,7 +5193,7 @@ input[type=number] {
 .tp-solution-item__sticker {
     font-weight: 500;
     color: hsl(var(--white));
-    background: hsl(var(--base));
+    background: #26db93;
     border-radius: 8px 0 0 8px;
     position: absolute;
     right: 0;
@@ -6441,7 +6441,7 @@ input[type=number] {
     height: 48px;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid hsl(var(--base));
+    border: 3px solid #26db93;
     padding: 5px;
 }
 
@@ -6501,7 +6501,7 @@ input[type=number] {
 }
 
 .faq-contact__left .desc .link:hover {
-    color: hsl(var(--base));
+    color: #26db93;
 }
 
 .faq-contact__right {
@@ -6563,7 +6563,7 @@ input[type=number] {
     padding: 95px 60px 100px;
     border-radius: 20px;
     overflow: hidden;
-    background-color: #E5DBFF;
+    background-color: #7fd3b1;
     z-index: 1;
 }
 
@@ -6998,7 +6998,7 @@ input[type=number] {
 .screenshot-section {
     position: relative;
     z-index: 2;
-    background: #E5DBFF;
+    background: #26db93;
     overflow: hidden;
 }
 
@@ -7173,7 +7173,7 @@ input[type=number] {
     height: 81px;
     flex-shrink: 0;
     border-radius: 100%;
-    background: hsl(var(--base));
+    background: #26db93;
     color: hsl(var(--white));
     font-size: 37px;
 }
@@ -7264,7 +7264,7 @@ input[type=number] {
     justify-content: center;
     width: 105px;
     height: 105px;
-    background: hsl(var(--base));
+    background: #26db93;
     border-radius: 50%;
     color: hsl(var(--white));
     font-size: 3rem;
