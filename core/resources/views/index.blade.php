@@ -98,7 +98,9 @@
         </div>
     </header>
 
-    <main class="section-wrapper bg-img" data-background-image="assets/images/thumbs/banner-bg.png">
+    {{-- assets/images/thumbs/banner-bg.png --}}
+
+    <main class="section-wrapper bg-img" data-background-image="">
         <section class="banner-section position-relative">
             <span class="up-down-shape upDown"><img src="assets/images/thumbs/up-down-shape-01.png"
                     alt=""></span>
