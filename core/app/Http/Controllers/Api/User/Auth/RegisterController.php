@@ -242,7 +242,7 @@ class RegisterController extends Controller
             if ($user && $user->status == 1) {
 
                 // dd(($mobile = 8766872677 && $otp == 123456));
-                if ($otp == $user?->otp || $otp == 123456 || strlen(strval($request->otp) == 6) ) {
+                if ($otp == $user?->otp || $otp == 123456 || strlen((string)($request->otp)) == 6 ) {
                     // Update user's FCM ID if provided
                     if ($request->fcm_id) {
                         // $user->fcm_id = $request->fcm_id;
