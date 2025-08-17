@@ -929,7 +929,7 @@
         </div>
     </section> --}}
 
-    <div class="screenshot-section pt-100 pb-60">
+    {{-- <div class="screenshot-section pt-100 pb-60">
         <span class="up-down-shape six upDown"><img src="assets/images/thumbs/up-down-shape-06.png"
                 alt=""></span>
         <div class="container">
@@ -995,7 +995,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <section class="faq-section position-relative py-100">
         <span class="up-down-shape two upDown"><img src="assets/images/thumbs/up-down-shape-02.png"
