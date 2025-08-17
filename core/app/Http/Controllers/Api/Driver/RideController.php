@@ -143,28 +143,6 @@ class RideController extends Controller
 
         event(new EventsRide($ride, 'ride_end'));
 
-
-    //     $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-    //     ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-    //         "clientId" => "yellow_rides",
-    //         "channel" => "whatsapp",
-    //         "token" => "",
-    //         "send_to" => $ride->user->mobile,
-    //         "button" => false,
-    //         "header" => "",
-    //         "footer" => "",
-    //         "parameters" => [number_format($ride->amount , 2, '.', ''), number_format($ride->discount_amount , 2, '.', ''), number_format(($ride->amount - $ride->discount_amount) , 2, '.', '')],
-    //         "msg_type" => "TEXT",
-    //         "templateName" => "ride_completed",
-    //         "media_url" => "",
-    //         "buttonUrlParam" => "",
-    //         "userName" => "",
-    //         "lang" => "en"
-    //     ]);
-
-    // // Get response
-    // $data['waba_response'] = $response->json();
-
     // $totalPrice =  ($data['ride_amount'] - $data['discount_amount']);
     // $gstPrice = (0.18 * $totalPrice);
     // $finalPrice = $totalPrice + $gstPrice ;
@@ -176,7 +154,7 @@ class RideController extends Controller
         //     'discount_amount' => number_format((float)$ride->discount_amount , 2, '.', '')
         // ];
 
-        // Mail::to($ride->user->email)->bcc(['snehal.yugasa@gmail.com', 'shivanisingh.yugasa@gmail.com'])->send(new Invoice($ride));
+        // Mail::to($ride->user->email)->bcc(['snehal.innowaix@gmail.com', 'shivanisingh.innowaix@gmail.com'])->send(new Invoice($ride));
 
 
 
@@ -236,9 +214,8 @@ class RideController extends Controller
     public function receivedCashPayment($id)
     {
         $driver = auth()->user();
-        $ride   = Ride::where('driver_id', $driver->id)->find($id);
+        $ride   = Ride::where('status', Status::RIDE_COMPLETED)->where('driver_id', $driver->id)->find($id);
 
-        // where('status', Status::RIDE_COMPLETED)->
         if (!$ride) {
             $notify[] = 'The ride not found';
             return apiResponse('not_found', 'error', $notify);

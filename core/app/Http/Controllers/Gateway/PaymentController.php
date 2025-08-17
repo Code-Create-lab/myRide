@@ -242,65 +242,8 @@ class PaymentController extends Controller
             )
             ];
 
-        // $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        // ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-        //     "clientId" => "yellow_rides",
-        //     "channel" => "whatsapp",
-        //     "token" => "",
-        //     "send_to" => $ride->user->mobile,
-        //     "button" => false,
-        //     "header" => "",
-        //     "footer" => "",
-        //     "parameters" => $paramWaba,
-        //     "msg_type" => "TEXT",
-        //     "templateName" => "advance_booking1",
-        //     "media_url" =>"",
-        //     "buttonUrlParam" =>$ride->uid,
-        //     "userName" => "",
-        //     "lang" => "en"
-        // ]);
-
-
-        // Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        // ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-        //     "clientId" => "yellow_rides",
-        //     "channel" => "whatsapp",
-        //     "token" => "",
-        //     "send_to" => 7979068408,
-        //     "button" => false,
-        //     "header" => "",
-        //     "footer" => "",
-        //     "parameters" => $paramWaba,
-        //     "msg_type" => "TEXT",
-        //     "templateName" => "advance_booking",
-        //     "media_url" => "",
-        //     "buttonUrlParam" =>  $ride->uid,
-        //     "userName" => "",
-        //     "lang" => "en"
-        // ]);
-
-        // Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        // ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-        //     "clientId" => "yellow_rides",
-        //     "channel" => "whatsapp",
-        //     "token" => "",
-        //     "send_to" => 8766271520,
-        //     "button" => false,
-        //     "header" => "",
-        //     "footer" => "",
-        //     "parameters" => $paramWaba,
-        //     "msg_type" => "TEXT",
-        //     "templateName" => "advance_booking",
-        //     "media_url" => "",
-        //     "buttonUrlParam" => $ride->uid,
-        //     "userName" => "",
-        //     "lang" => "en"
-        // ]);
 
     }
-
-        // $data['waba_response'] = $response ;
-        // $data['waba_param'] = $paramWaba ;
 
         if($ride->user->email){
 

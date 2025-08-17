@@ -96,7 +96,7 @@ class RideController extends Controller
             $data['ride_type']        = Status::INTER_CITY_RIDE;
         }
         $result[] = $data; // Alternative to array_push($result, $data);
-        
+
      }
     //  Log::info('findFareAndServices', [
     //     'zoneData' => $zoneData,
@@ -275,7 +275,7 @@ class RideController extends Controller
             ->notEnd()
             ->get();
 
-          
+
 
         $shortCode = [
             'ride_id'         => $ride->uid,
@@ -284,17 +284,17 @@ class RideController extends Controller
             'destination'     => $ride->destination,
             'duration'        => $ride->duration,
             'distance'        => $ride->distance,
-            'pickup_date_time' => Carbon::parse($ride->pickup_date_time)->format('F j, Y \a\t g:i A') 
+            'pickup_date_time' => Carbon::parse($ride->pickup_date_time)->format('F j, Y \a\t g:i A')
         ];
 
         $ride->load('user', 'service', 'driver', 'driver.brand');
         initializePusher();
-      
+
         foreach ($drivers as $driver) {
 
             if($driver->ride ){
 
-           
+
             notify($driver, 'NEW_RIDE', $shortCode);
             event(new NewRide("new-ride-for-driver-$driver->id", [
                 'ride'              => $ride,
@@ -511,7 +511,7 @@ class RideController extends Controller
                 'distance'        => $ride->distance,
             ]);
 
-      
+
         }
 
         $ride->cancel_reason      = $request->cancel_reason;
@@ -523,7 +523,7 @@ class RideController extends Controller
         $ride->load('user', 'service');
 
         $getDriver = $ride->driver;
-  
+
         initializePusher();
         // dd($getDriver);
 
@@ -531,15 +531,15 @@ class RideController extends Controller
 
             if(!$ride->is_scheduled && $ride->driver){
 
-              event(new CancelRide("new-ride-for-driver-".$getDriver->id ));   
+              event(new CancelRide("new-ride-for-driver-".$getDriver->id ));
 
             }
-      
 
-      
+
+
         // initializePusher();
-      
-        
+
+
         $getDrivers = Driver::active()
             ->where('online_status', Status::YES)
             ->where('zone_id', $ride->pickup_zone_id)
@@ -558,7 +558,7 @@ class RideController extends Controller
 
             if(!$ride->is_scheduled && $ride->driver_id == 0){
 
-                event(new CancelRide("new-ride-for-driver-".$driver->id ));   
+                event(new CancelRide("new-ride-for-driver-".$driver->id ));
 
             }
         }
@@ -568,14 +568,14 @@ class RideController extends Controller
         //     'driver_image_path' => getFilePath('driver'),
         //     'user_image_path'   => getFilePath('user'),
         // ]));
-        
-        // event(new NewRide("new-ride-for-driver-$ride->driver_id", ['ride' => $ride], 'cancel-ride'));
 
         // event(new NewRide("new-ride-for-driver-$ride->driver_id", ['ride' => $ride], 'cancel-ride'));
 
-        
+        // event(new NewRide("new-ride-for-driver-$ride->driver_id", ['ride' => $ride], 'cancel-ride'));
 
-       
+
+
+
 
         $notify[] = 'Ride canceled successfully';
         return apiResponse("canceled_ride", 'success', $notify);
@@ -634,9 +634,9 @@ class RideController extends Controller
             })
             ->orderBy('id', 'desc')
             ->paginate(getPaginate());
-            
 
-            
+
+
         // dd($rides);
         $notify[]      = "Get the ride list";
         $data['rides'] = $rides;
@@ -781,7 +781,7 @@ class RideController extends Controller
             'destination'     => $ride->destination,
             'duration'        => $ride->duration,
             'distance'        => $ride->distance,
-            'pickup_date_time' => Carbon::parse($ride->pickup_date_time)->format('F j, Y \a\t g:i A') 
+            'pickup_date_time' => Carbon::parse($ride->pickup_date_time)->format('F j, Y \a\t g:i A')
         ]);
 
         $notify[] = 'Bid accepted successfully';
@@ -836,13 +836,13 @@ class RideController extends Controller
             return apiResponse('not_found', 'error', $notify);
         }
         $ride['amount'] =         round((( $ride->recommend_amount - $ride->discount_amount )  + ( $ride->service->platform_fee + (($ride->service->gst/100) * ($ride->recommend_amount - $ride->discount_amount))) ));
-      
+
         // $ride->amount =  $ride['amount'] ;
         $ride->save();
         $ride['gst'] = $ride->service->gst;
         $ride['platform_fee'] = $ride->service->platform_fee;
-        
-        
+
+
         $ride['payable_amount'] = round((( $ride->recommend_amount - $ride->discount_amount )  + ( $ride->service->platform_fee + (($ride->service->gst/100) * ($ride->recommend_amount - $ride->discount_amount))) ));
         $ride->load('driver', 'driver.brand', 'service', 'user', 'coupon');
 
@@ -937,7 +937,7 @@ class RideController extends Controller
             return apiResponse('limit_exists', 'error', $notify);
         }
 
-       
+
         $calculatedAmount = round((($ride->recommend_amount - $ride->discount_amount ?? 0) + (($ride->service->platform_fee + (($ride->service->gst / 100) * ($ride->recommend_amount - $ride->discount_amount))))));
         $charge      = ($ride->service->platform_fee + ($ride->service->gst / 100)); //0
         $payable     = $amount + $charge;
@@ -965,80 +965,7 @@ class RideController extends Controller
         $ride->paid_amount = $calculatedAmount;
         $ride->save();
 
-        // $paramWaba = [
-        //     (float) number_format($ride->recommend_amount, 2, '.', ''),
-        //     (float) ($ride->service->platform_fee ?? 0),
-        //     (float) ($ride->service->gst ?? 0),
-        //     (float) number_format($ride->discount_amount, 2, '.', ''),
-        //     (float) number_format(
-        //         round(
-        //             (($ride->recommend_amount - $ride->discount_amount) +
-        //             ($ride->service->platform_fee + ($ride->service->gst / 100) * $ride->recommend_amount))
-        //         ),
-        //         2,
-        //         '.',
-        //         ''
-        //     )
-        //     ];
-
-        // $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        // ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-        //     "clientId" => "yellow_rides",
-        //     "channel" => "whatsapp",
-        //     "token" => "",
-        //     "send_to" => $ride->user->mobile,
-        //     "button" => false,
-        //     "header" => "",
-        //     "footer" => "",
-        //     "parameters" => $paramWaba,
-        //     "msg_type" => "TEXT",
-        //     "templateName" => "ridecompleted",
-        //     "media_url" =>"",
-        //     "buttonUrlParam" =>$ride->uid,
-        //     "userName" => "",
-        //     "lang" => "en"
-        // ]);
-
-
-        // Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        // ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-        //     "clientId" => "yellow_rides",
-        //     "channel" => "whatsapp",
-        //     "token" => "",
-        //     "send_to" => 7979068408,
-        //     "button" => false,
-        //     "header" => "",
-        //     "footer" => "",
-        //     "parameters" => $paramWaba,
-        //     "msg_type" => "TEXT",
-        //     "templateName" => "ridecompleted",
-        //     "media_url" => "",
-        //     "buttonUrlParam" =>  $ride->uid,
-        //     "userName" => "",
-        //     "lang" => "en"
-        // ]);
-
-        // Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-        // ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-        //     "clientId" => "yellow_rides",
-        //     "channel" => "whatsapp",
-        //     "token" => "",
-        //     "send_to" => 8766271520,
-        //     "button" => false,
-        //     "header" => "",
-        //     "footer" => "",
-        //     "parameters" => $paramWaba,
-        //     "msg_type" => "TEXT",
-        //     "templateName" => "ridecompleted",
-        //     "media_url" => "",
-        //     "buttonUrlParam" => $ride->uid,
-        //     "userName" => "",
-        //     "lang" => "en"
-        // ]);
-
-        // $data['waba_response'] = $response ;
-        // $data['waba_param'] = $paramWaba ;
-        // Mail::to($ride->user->email)->bcc(['snehal.yugasa@gmail.com', 'shivanisingh.yugasa@gmail.com'])->send(new Invoice($ride));
+              // Mail::to($ride->user->email)->bcc(['snehal.innowaix@gmail.com', 'shivanisingh.innowaix@gmail.com'])->send(new Invoice($ride));
 
 
 

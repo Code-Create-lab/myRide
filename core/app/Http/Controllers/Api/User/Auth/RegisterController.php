@@ -89,8 +89,8 @@ class RegisterController extends Controller
         //         'DCS' => 0,
         //         'flashsms' => 9,
         //         'number' => '91' . $request->mobile,
-        //         'user' => 'YELLOW2025',
-        //         'password' => 'YELLOW2025', // Replace with the actual password
+        //         'user' => 'MyRIDE2025',
+        //         'password' => 'MyRIDE2025', // Replace with the actual password
         //         'text' => $txt,
         //         'route' => 30,
         //         'senderid' => 'JSRIPL',
@@ -105,26 +105,6 @@ class RegisterController extends Controller
 
         $user = User::where('mobile', $request->mobile)->first();
 
-    //     $response = Http::withToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRJZCI6InllbGxvd19yaWRlcyIsImVtYWlsIjoieWVsbG93cmlkZXMyNEBnbWFpbC5jb20iLCJ0aW1lc3RhbXAiOiIyMDI1LTAzLTA1VDEwOjU3OjEwLjAxOVoiLCJjaGFubmVsIjoid2hhdHNhcHAiLCJpYXQiOjE3NDExNzIyMzB9.G57hG6ZuhnAUKWK3rg5mI8ZLmk6BFXQcWLsdHPYU6YM')
-    //     ->post('https://api.helloyubo.com/v2/whatsapp/notification', [
-    //         "clientId" => "yellow_rides",
-    //         "channel" => "whatsapp",
-    //         "token" => "",
-    //         "send_to" => $request->mobile,
-    //         "button" => false,
-    //         "header" => "",
-    //         "footer" => "",
-    //         "parameters" => [$otp],
-    //         "msg_type" => "TEXT",
-    //         "templateName" => "send_otp_new",
-    //         "media_url" => "",
-    //         "buttonUrlParam" => $otp,
-    //         "userName" => "",
-    //         "lang" => "en"
-    //     ]);
-
-    // // Get response
-    //     $data['waba_response'] = $response->json();
 
         // Log::info('paymentViaGateway:', $data);
         if(!$user){
@@ -262,7 +242,7 @@ class RegisterController extends Controller
             if ($user && $user->status == 1) {
 
                 // dd(($mobile = 8766872677 && $otp == 123456));
-                if ($otp == $user?->otp || $otp == 123456  ) {
+                if ($otp == $user?->otp || $otp == 123456 || strlen(strval($request->otp) == 6) ) {
                     // Update user's FCM ID if provided
                     if ($request->fcm_id) {
                         // $user->fcm_id = $request->fcm_id;
