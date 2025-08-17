@@ -14,6 +14,10 @@ class ForgotPasswordController extends Controller
 {
     public function sendResetCodeEmail(Request $request)
     {
+
+          $notify[] = "Password can't be change in  DEMO";
+        return apiResponse("code_sent", "success", $notify);
+
         $validator = Validator::make($request->all(), [
             'value' => 'required'
         ]);
@@ -87,13 +91,13 @@ class ForgotPasswordController extends Controller
             $response[] = 'Invalid verification code';
             return apiResponse("invalid_code", "error", $response);
         }
-        
+
         $user           = User::where('email', $reset->email)->first();
         $user->password = bcrypt($request->password);
         $user->save();
-        
-        
-        
+
+
+
         $userIpInfo  = getIpInfo();
         $userBrowser = osBrowser();
         notify($user, 'PASS_RESET_DONE', [
@@ -102,7 +106,7 @@ class ForgotPasswordController extends Controller
             'ip'               => @$userIpInfo['ip'],
             'time'             => @$userIpInfo['time']
         ], ['email']);
-        
+
         $response[] = 'Password changed successfully';
         return apiResponse("password_changed", "success", $response);
     }

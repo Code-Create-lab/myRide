@@ -15,6 +15,10 @@ class ForgotPasswordController extends Controller
 {
     public function sendResetCodeEmail(Request $request)
     {
+
+          $notify[] = "Password can't be change in  DEMO";
+        return apiResponse("code_sent", "success", $notify);
+
         $validator = Validator::make($request->all(), [
             'value' => 'required'
         ]);
