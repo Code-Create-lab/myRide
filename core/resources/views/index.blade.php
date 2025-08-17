@@ -177,7 +177,7 @@
                                 <li class="tp-solution-item__list-item">Flexible Payment Options</li>
                                 <li class="tp-solution-item__list-item">Seamless User Interface</li>
                             </ul>
-                            <a href="https://preview.innowaix.com/myRide/apk/rider.apk" class="btn btn--primary"
+                            <a href="https://preview.innowaix.com/myRide/apk/myride_user_app.apk" class="btn btn--primary"
                                 download target="_blank">
                                 <i class="las la-download"></i> Get Rider App
                             </a>
@@ -219,7 +219,7 @@
                                 <li class="tp-solution-item__list-item">Earnings Tracking</li>
                                 <li class="tp-solution-item__list-item">Flexible Scheduling</li>
                             </ul>
-                            <a href="https://preview.innowaix.com/myRide/apk/driver.apk" class="btn btn--success"
+                            <a href="https://myride.innowaix.com/apk/myride-driver_app.apk" class="btn btn--success"
                                 download target="_blank">
                                 <i class="las la-download"></i> Get Driver App
                             </a>
@@ -1276,13 +1276,13 @@
                                         </p>
                                     </div>
                                     <div class="cta-content__buttons">
-                                        <a href="https://preview.innowaix.com/myRide/apk/rider.apk"
+                                        <a href="https://myride.innowaix.com/apk/myride-driver_app.apk"
                                             class="btn btn--base btn--lg wow fadeInRight" data-wow-duration="0.5s"
                                             data-wow-delay="0.7s" download target="_blank">
                                             <i class="las la-download"></i>
                                             Get Rider App
                                         </a>
-                                        <a href="https://preview.innowaix.com/myRide/apk/driver.apk"
+                                        <a href="https://myride.innowaix.com/apk/myride-driver_app.apk"
                                             class="btn btn--lg wow fadeInRight btn--danger" data-wow-duration="0.5s"
                                             data-wow-delay="0.7s" download target="_blank">
                                             <i class="las la-download"></i>
@@ -1335,10 +1335,10 @@
                     </div>
                     <div class="col-12 text-center">
                         <div class="footer-download-image">
-                            <a href="https://preview.innowaix.com/myRide/apk/rider.apk" download target="_blank">
+                            <a href="https://myride.innowaix.com/apk/myride-driver_app.apk" download target="_blank">
                                 <img src="assets/images/thumbs/play-store.png" alt="">
                             </a>
-                            <a href="https://preview.innowaix.com/myRide/apk/driver.apk" download target="_blank">
+                            <a href="https://myride.innowaix.com/apk/myride-driver_app.apk" download target="_blank">
                                 <img src="assets/images/thumbs/app-store.png" alt="">
                             </a>
                         </div>
