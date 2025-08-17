@@ -55,6 +55,11 @@ class AuthorizationController extends Controller
 
     public function sendVerifyCode($type)
     {
+
+         $notify[] = "Password can't be change in  DEMO";
+        return apiResponse("code_sent", "success", $notify);
+
+
         $user = auth()->user();
 
         if ($this->checkCodeValidity($user)) {
