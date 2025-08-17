@@ -1276,7 +1276,7 @@
                                         </p>
                                     </div>
                                     <div class="cta-content__buttons">
-                                        <a href="https://myride.innowaix.com/apk/myride-driver_app.apk"
+                                        <a href="http://myride.innowaix.com/apk/myride_user_app.apk"
                                             class="btn btn--base btn--lg wow fadeInRight" data-wow-duration="0.5s"
                                             data-wow-delay="0.7s" download target="_blank">
                                             <i class="las la-download"></i>
@@ -1322,7 +1322,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-xxl-4 offset-xxl-3 col-xl-5 offset-xl-2 col-md-6">
+                    {{-- <div class="col-xxl-4 offset-xxl-3 col-xl-5 offset-xl-2 col-md-6">
                         <div class="d-flex flex-column">
                             <h4 class="text-uppercase">
                                 A Product of
@@ -1332,10 +1332,10 @@
                                 <img src="assets/images/thumbs/logo_My.png" alt="">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-12 text-center">
                         <div class="footer-download-image">
-                            <a href="https://myride.innowaix.com/apk/myride-driver_app.apk" download target="_blank">
+                            <a href="http://myride.innowaix.com/apk/myride_user_app.apk" download target="_blank">
                                 <img src="assets/images/thumbs/play-store.png" alt="">
                             </a>
                             <a href="https://myride.innowaix.com/apk/myride-driver_app.apk" download target="_blank">
