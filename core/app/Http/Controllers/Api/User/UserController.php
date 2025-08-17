@@ -148,6 +148,12 @@ class UserController extends Controller
 
     public function submitProfile(Request $request)
     {
+
+          $notify[] = 'Profile update not possible in DEMO';
+
+        return apiResponse("profile_updated", "success", $notify);
+
+
         $validator = Validator::make($request->all(), [
             'firstname' => 'required',
             'lastname'  => 'required',
