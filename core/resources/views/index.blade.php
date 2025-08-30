@@ -1322,17 +1322,17 @@
                             </p>
                         </div>
                     </div>
-                    {{-- <div class="col-xxl-4 offset-xxl-3 col-xl-5 offset-xl-2 col-md-6">
+                    <div class="col-xxl-4 offset-xxl-3 col-xl-5 offset-xl-2 col-md-6">
                         <div class="d-flex flex-column">
                             <h4 class="text-uppercase">
                                 A Product of
                             </h4>
                             <div class="logo wow fadeInRight My-logo" data-wow-duration="0.5s"
                                 data-wow-delay="0.7s">
-                                <img src="assets/images/thumbs/logo_My.png" alt="">
+                                <img src="assets/innowaixlogo.png" alt="">
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="col-12 text-center">
                         <div class="footer-download-image">
                             <a href="http://myride.innowaix.com/apk/myride_user_app.apk" download target="_blank">
