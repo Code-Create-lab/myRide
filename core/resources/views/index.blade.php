@@ -1329,7 +1329,7 @@
                             </h4>
                             <div class="logo wow fadeInRight My-logo" data-wow-duration="0.5s"
                                 data-wow-delay="0.7s">
-                                <img    width: 150px; src="img/innowaixlogo.jpg" alt="">
+                                <img    width="150px" src="img/innowaixlogo.jpg" alt="">
                             </div>
                         </div>
                     </div>
