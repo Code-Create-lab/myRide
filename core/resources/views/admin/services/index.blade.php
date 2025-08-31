@@ -80,7 +80,7 @@
                                                 title="service" />
                                         </td>
                                         <td>
-                                            <x-admin.ui.btn.edit tag="button" :data-image="imageGet('service', $service->image)" :data-resource="$service" />
+                                            {{-- <x-admin.ui.btn.edit tag="button" :data-image="imageGet('service', $service->image)" :data-resource="$service" /> --}}
                                         </td>
                                     </tr>
                                 @empty
@@ -144,7 +144,7 @@
                     <div class="col-lg-6 " style="display: " >
                         <div class="form-group">
                             <label>@lang('Fare')
-                               
+
                                 <span style="color: red; font-size:0.750rem; font-weight:300"> (Please fill fare on each update) </span>
                             </label>
                             <div class="input-group input--group">
@@ -154,7 +154,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>@lang('Commission')</label>
@@ -191,7 +191,7 @@
                         </div>
                         <div class="row">
 
-                      
+
                         <div class="col-lg-12" style="display: " >
                             <div class="form-group">
                                 <label>@lang('Peak Hour Price')</label>
@@ -225,7 +225,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     </div>
                     {{-- <div class="col-12">
@@ -340,16 +340,16 @@
                 $modal.find(".image-upload img").attr('src', imagePath);
                 $modal.find(".image-upload [type=file]").attr('required', false);
                 $modal.find('form').attr('action', action.replace(':id', data.id));
-                
+
                 $("input[name='peak_hour_price']").val(getAmount(data.peak_hour_price));
                  // Deserialize the peak_hours data
     let peakHoursString = data.peak_hours; // Serialized string (e.g., `a:2:{i:0;s:11:"12:47-13:47";i:1;s:11:"16:47-17:47";}`)
                 // console.log("peakHoursString",peakHoursString,data);
                 let peakHoursArray = [];
                 if(peakHoursString){
-                
+
                  peakHoursArray = unserialize(peakHoursString); // Convert it to an array
-            }      
+            }
 
     // Clear existing peak hour rows before adding new ones
     $(".peak_hour_time").empty();

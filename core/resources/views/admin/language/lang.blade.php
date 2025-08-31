@@ -25,7 +25,7 @@
                         <div class="mb-3">
                             <p>{{ __($language->info) }}</p>
                         </div>
-                        <div class="btn--group">
+                        {{-- <div class="btn--group">
                             <a href="{{ route('admin.language.key', $language->id) }}" class="btn  btn-outline--success">
                                 <i class="la la-language"></i> @lang('Translate')
                             </a>
@@ -38,7 +38,7 @@
                                 @disabled($language->id == 1 || $language->is_default == Status::YES)>
                                 <i class="las la-trash"></i> @lang('Remove')
                             </button>
-                        </div>
+                        </div> --}}
                     </x-admin.ui.card.body>
                 </x-admin.ui.card>
             </div>
@@ -110,13 +110,13 @@
 
 @push('breadcrumb-plugins')
     <div class=" d-flex gap-2 flex-wrap">
-        <button type="button" class="btn  btn--primary addBtn flex-fill">
+        {{-- <button type="button" class="btn  btn--primary addBtn flex-fill">
             <i class="las la-plus me-1"></i>@lang('Add New Language')
         </button>
         <button type="button" class="btn  btn--info keyBtn flex-fill" data-bs-toggle="modal"
             data-bs-target="#getLangModal">
             <i class="las la-code me-1"></i>@lang('Language Keywords')
-        </button>
+        </button> --}}
     </div>
 @endpush
 

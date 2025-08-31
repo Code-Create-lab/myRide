@@ -820,9 +820,177 @@
                 "mobile verification",
                 "email verification"
             ]
+        },
+        {
+            "title": "Notification Setting",
+            "icon": "las la-bell",
+            "menu_active": "admin.setting.notification.*",
+            "submenu": [
+                {
+                    "title": "Global Template",
+                    "route_name": "admin.setting.notification.global.email",
+                    "menu_active": "admin.setting.notification.global.*",
+                    "keyword": [
+                        "email configuration",
+                        "email setting",
+                        "email template",
+                        "global template",
+                        "global notification"
+                    ]
+                },
+                {
+                    "title": "Email Setting",
+                    "route_name": "admin.setting.notification.email",
+                    "menu_active": "admin.setting.notification.email",
+                    "keyword": [
+                        "email configuration",
+                        "email setting",
+                        "smtp",
+                        "sendgrid",
+                        "send grid",
+                        "mailjet",
+                        "mail jet",
+                        "php"
+                    ]
+                },
+                {
+                    "title": "SMS Setting",
+                    "route_name": "admin.setting.notification.sms",
+                    "menu_active": "admin.setting.notification.sms",
+                    "keyword": [
+                        "sms configure",
+                        "sms setting",
+                        "sms template",
+                        "sms broadcast",
+                        "nexmo",
+                        "clickatell",
+                        "infobip",
+                        "message bird",
+                        "twilio",
+                        "text magic",
+                        "custom api"
+                    ]
+                },
+                {
+                    "title": "Push Notification Setting",
+                    "route_name": "admin.setting.notification.push",
+                    "menu_active": "admin.setting.notification.push",
+                    "keyword": [
+                        "push notification configure",
+                        "push notification setting",
+                        "firebase setting",
+                        "firebase control",
+                        "push notification template"
+                    ]
+                },
+                {
+                    "title": "Notification Templates",
+                    "route_name": "admin.setting.notification.templates",
+                    "menu_active": "admin.setting.notification.templates",
+                    "keyword": [
+                        "email template",
+                        "sms template",
+                        "push notification template",
+                        "notification template",
+                        "template setting",
+                        "global template",
+                        "global notification",
+                        "custom api"
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "CRON Job Setting",
+            "icon": "las la-clock",
+            "route_name": "admin.cron.index",
+            "menu_active": "admin.cron.*",
+            "keyword": [
+                "cron job",
+                "scheduled tasks",
+                "automated tasks",
+                "task scheduling",
+                "cron schedule",
+                "cron configuration",
+                "background jobs",
+                "cron execution",
+                "cron timing",
+                "automation",
+                "task automation",
+                "cron logs",
+                "job queue",
+                "system tasks"
+            ]
+        },
+        {
+            "keyword": [
+                "GDPR cookie",
+                "cookie policy",
+                "data privacy",
+                "GDPR settings",
+                "cookie policy settings",
+                "data privacy settings"
+            ],
+            "title": "GDPR Cookie",
+            "icon": "las la-cookie-bite",
+            "route_name": "admin.setting.cookie"
+        },
+        {
+            "keyword": [
+                "custom CSS",
+                "modify styles",
+                "frontend",
+                "styling",
+                "design customization",
+                "CSS settings",
+                "style settings",
+                "frontend customization",
+                "design settings",
+                "customize CSS"
+            ],
+            "title": "Custom CSS",
+            "icon": "lab la-css3-alt",
+            "route_name": "admin.setting.custom.css"
+        },
+        {
+            "keyword": [
+                "Site map",
+                "sitemap",
+                "xml",
+                "sitemap.xml"
+            ],
+            "title": "Sitemap XML",
+            "subtitle": "Insert the sitemap XML here to enhance SEO performance.",
+            "icon": "las la-sitemap",
+            "route_name": "admin.setting.sitemap"
+        },
+        {
+            "keyword": [
+                "Robots",
+                "txt",
+                "robots.txt",
+                "robot.txt"
+            ],
+            "title": "Robots txt",
+            "subtitle": "Insert the robots.txt content here to enhance bot web crawlers and instruct them on how to interact with certain areas of the website.",
+            "icon": "las la-robot",
+            "route_name": "admin.setting.robot"
+        },
+        {
+            "keyword": [
+                "maintenance mode",
+                "system maintenance",
+                "system health",
+                "maintenance settings",
+                "system health settings",
+                "enable maintenance",
+                "disable maintenance",
+                "maintenance configuration"
+            ],
+            "title": "Maintenance Mode",
+            "icon": "las la-cogs",
+            "route_name": "admin.maintenance.mode"
         }
-
-
     ],
     "frontend_manager": [
         {
@@ -870,7 +1038,110 @@
         }
     ],
     "other": [
-
+        {
+            "title": "Support Ticket",
+            "icon": "la la-ticket",
+            "menu_active": "admin.ticket.*",
+            "submenu": [
+                {
+                    "title": "Pending Ticket",
+                    "route_name": "admin.ticket.pending",
+                    "menu_active": "admin.ticket.pending",
+                    "counter": "pendingTicketCount",
+                    "keyword": [
+                        "pending tickets",
+                        "ticket management",
+                        "support tickets",
+                        "customer support",
+                        "open tickets",
+                        "ticket status",
+                        "ticket resolution",
+                        "ticket assignment",
+                        "ticket prioritization"
+                    ]
+                },
+                {
+                    "title": "Closed Ticket",
+                    "route_name": "admin.ticket.closed",
+                    "menu_active": "admin.ticket.closed",
+                    "keyword": [
+                        "closed tickets",
+                        "ticket resolution",
+                        "ticket history",
+                        "resolved tickets",
+                        "support tickets",
+                        "customer support",
+                        "ticket management",
+                        "ticket tracking",
+                        "ticket feedback",
+                        "ticket archive",
+                        "issue resolution",
+                        "completed tickets"
+                    ]
+                },
+                {
+                    "title": "Answered Ticket",
+                    "route_name": "admin.ticket.answered",
+                    "menu_active": "admin.ticket.answered",
+                    "keyword": [
+                        "answered tickets",
+                        "ticket resolution",
+                        "resolved tickets",
+                        "customer support",
+                        "support tickets",
+                        "ticket management",
+                        "response time",
+                        "ticket history",
+                        "customer feedback",
+                        "ticket follow-up",
+                        "closed tickets",
+                        "communication logs"
+                    ]
+                },
+                {
+                    "title": "All Ticket",
+                    "route_name": "admin.ticket.index",
+                    "menu_active": "admin.ticket.index",
+                    "keyword": [
+                        "all tickets",
+                        "ticket management",
+                        "support tickets",
+                        "ticket overview",
+                        "ticket status",
+                        "customer inquiries",
+                        "ticket tracking",
+                        "ticket history",
+                        "ticket filtering",
+                        "ticket categorization",
+                        "open tickets",
+                        "closed tickets"
+                    ]
+                }
+            ],
+            "counters": [
+                "pendingTicketCount"
+            ]
+        },
+        {
+            "title": "Manage Subscriber",
+            "icon": "las la-inbox",
+            "route_name": "admin.subscriber.index",
+            "menu_active": "admin.subscriber.index",
+            "keyword": [
+                "subscriber management",
+                "manage subscribers",
+                "subscriber list",
+                "email subscribers",
+                "subscriber segmentation",
+                "subscription status",
+                "subscriber details",
+                "newsletter subscribers",
+                "subscriber preferences",
+                "unsubscribe management",
+                "subscriber analytics",
+                "contact management"
+            ]
+        },
         {
             "title": "Application Information",
             "icon": "las la-folder-plus",

@@ -30,10 +30,10 @@
                                 @lang('supported currencies are currently activated for this gateway.')
                             </p>
                         </div>
-                        <a href="{{ route('admin.gateway.automatic.edit', $gateway->alias) }}"
+                        {{-- <a href="{{ route('admin.gateway.automatic.edit', $gateway->alias) }}"
                             class="btn  btn-outline--primary">
                             <span class=" btn--icon"><i class="la la-tools"></i></span>@lang('Configure')
-                        </a>
+                        </a> --}}
                     </x-admin.ui.card.body>
                 </x-admin.ui.card>
             </div>
@@ -74,10 +74,10 @@
                                 <strong>{{ __(@$mGateway->currencies->first()->currency) }}</strong>
                             </p>
                         </div>
-                        <a href="{{ route('admin.gateway.manual.edit', $mGateway->alias) }}"
+                        {{-- <a href="{{ route('admin.gateway.manual.edit', $mGateway->alias) }}"
                             class="btn btn-outline--primary">
                             <span class="btn--icon"><i class="la la-tools"></i></span>@lang('Configure')
-                        </a>
+                        </a> --}}
                     </x-admin.ui.card.body>
                 </x-admin.ui.card>
             </div>
@@ -87,7 +87,7 @@
             </div>
         @endforelse
     </div>
-    
+
     <x-confirmation-modal />
 @endsection
 

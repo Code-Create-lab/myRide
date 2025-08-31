@@ -60,7 +60,7 @@
                                                 title="coupon" />
                                         </td>
                                         <td>
-                                            <x-admin.ui.btn.edit tag="button" : :data-resource="$coupon" />
+                                            {{-- <x-admin.ui.btn.edit tag="button" : :data-resource="$coupon" /> --}}
                                         </td>
                                     </tr>
                                 @empty

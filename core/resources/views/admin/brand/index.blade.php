@@ -31,7 +31,7 @@
                                                 title="brand" />
                                         </td>
                                         <td>
-                                            <x-admin.ui.btn.edit tag="button" :data-image="imageGet('brand', $brand->image)" :data-resource="$brand" />
+                                            {{-- <x-admin.ui.btn.edit tag="button" :data-image="imageGet('brand', $brand->image)" :data-resource="$brand" /> --}}
                                         </td>
                                     </tr>
                                 @empty

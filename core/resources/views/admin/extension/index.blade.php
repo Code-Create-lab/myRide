@@ -18,7 +18,7 @@
                         <div class="mb-3">
                             <p>{{ __($extension->info) }}</p>
                         </div>
-                        <div class="btn--group">
+                        {{-- <div class="btn--group">
                             <button type="button" class="flex-sm--fill btn  btn-outline--primary  editBtn"
                                 data-name="{{ __($extension->name) }}"
                                 data-shortcode="{{ json_encode($extension->shortcode) }}"
@@ -44,7 +44,7 @@
                                     <span class="btn--icon"><i class="la la-eye-slash"></i></span>@lang('Disable')
                                 </button>
                             @endif
-                        </div>
+                        </div> --}}
                     </x-admin.ui.card.body>
                 </x-admin.ui.card>
             </div>

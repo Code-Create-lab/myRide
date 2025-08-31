@@ -262,7 +262,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <x-admin.ui.btn.submit />
+                        {{-- <x-admin.ui.btn.submit /> --}}
                     </div>
                 </div>
             </x-admin.ui.card.body>

@@ -10,9 +10,9 @@
                             <h6 class="mb-0 config-name">{{ __(ucwords(@$configuration->title)) }}</h6>
                         </div>
                         <div class="form-check form-switch form--switch pl-0 form-switch-success">
-                            <input class="form-check-input configuration-switch" type="checkbox" role="switch"
+                            {{-- <input class="form-check-input configuration-switch" type="checkbox" role="switch"
                                 id="{{ $k }}" data-key="{{ $k }}" @checked(gs($k))
-                                data-configuration='@json($configuration)'>
+                                data-configuration='@json($configuration)'> --}}
                         </div>
                     </div>
                     <div class="system-configure__content">

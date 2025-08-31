@@ -22,7 +22,7 @@
                                                 title="zone" />
                                         </td>
                                         <td>
-                                            <x-admin.ui.btn.edit :href="route('admin.zone.edit', $zone->id)" />
+                                            {{-- <x-admin.ui.btn.edit :href="route('admin.zone.edit', $zone->id)" /> --}}
                                         </td>
                                     </tr>
                                 @empty
