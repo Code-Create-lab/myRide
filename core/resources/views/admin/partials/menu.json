@@ -824,51 +824,7 @@
 
 
     ],
-    "frontend_manager": [
-        {
-            "title": "Manage Pages",
-            "icon": "las la-list",
-            "route_name": "admin.frontend.manage.pages",
-            "menu_active": [
-                "admin.frontend.manage.pages",
-                "admin.frontend.manage.section",
-                "admin.frontend.manage.pages.seo"
-            ],
-            "keyword": [
-                "page management",
-                "frontend pages",
-                "page editor",
-                "page creation",
-                "website pages",
-                "content management",
-                "page customization",
-                "page publishing",
-                "page settings",
-                "dynamic pages"
-            ]
-        },
-        {
-            "title": "Manage Sections",
-            "icon": "la la-html5",
-            "route_name": "admin.frontend.index",
-            "menu_active": [
-                "admin.frontend.index",
-                "admin.frontend.sections"
-            ],
-            "keyword": [
-                "section management",
-                "frontend sections",
-                "content sections",
-                "section editor",
-                "section customization",
-                "layout sections",
-                "html sections",
-                "dynamic sections",
-                "section templates",
-                "responsive sections"
-            ]
-        }
-    ],
+
     "other": [
 
         {
